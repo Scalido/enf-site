@@ -153,7 +153,7 @@ function renderFooter() {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 École Nationale des Finances · Tous droits réservés · RDC</span>
+    <span>© 2026 École Nationale des Finances · Tous droits réservés · RDC · Conçu par <a href="https://pnlconsulting.online/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;opacity:.8;">PNL consulting</a></span>
     <img src="../img/nouveau-logo-blanc-enf-footer.png" alt="ENF · Gouvernement RDC" class="footer-bottom-logo" style="height:32px; opacity:.5;" />
   </div>
 </footer>`;
