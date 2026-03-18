@@ -58,6 +58,7 @@ function renderNavbar() {
     </li>
     <li><a href="espace-apprenant.html" class="${isActive('espace-apprenant.html')}">Espace Apprenant</a></li>
     <li><a href="actualites.html" class="${isActive('actualites.html')}">Actualités</a></li>
+    <li><a href="ressources.html" class="${isActive('ressources.html')}">Ressources</a></li>
     <li><a href="contact.html" class="nav-cta${isActive('contact.html')}">Contact</a></li>
   </ul>
   <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -71,6 +72,7 @@ function renderNavbar() {
     <a href="index.html" class="${isActive('index.html')}">Accueil</a>
     <a href="about.html" class="${isActive('about.html')}">À propos</a>
     <a href="actualites.html" class="${isActive('actualites.html')}">Actualités</a>
+    <a href="ressources.html" class="${isActive('ressources.html')}">Ressources</a>
     <a href="contact.html" class="${isActive('contact.html')}">Contact</a>
   </div>
   <div class="mobile-nav-section">
@@ -114,6 +116,7 @@ function renderFooter() {
         <li><a href="about.html">À propos</a></li>
         <li><a href="formation.html">Formations</a></li>
         <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
         <li><a href="espace-apprenant.html">Espace Apprenant</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
