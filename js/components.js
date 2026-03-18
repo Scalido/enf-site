@@ -12,9 +12,6 @@ function isActive(page) {
 /* ── NAVBAR ── */
 function renderNavbar() {
   return `
-<div id="loader"><img src="../img/nouveau-logo-blanc-enf-footer.png" alt="ENF" class="loader-logo-img" /><div class="loader-bar-wrap"><div class="loader-bar"></div></div></div>
-<div id="progress-bar"></div>
-
 <nav class="navbar">
   <a href="index.html" class="nav-logo"><img src="../img/nouveau-logo-enf-header.png" alt="ENF — Gouvernement RDC" class="nav-logo-img" style="height:66px;" /></a>
   <ul class="nav-links">
@@ -127,6 +124,7 @@ function renderFooter() {
         <li><a href="formation.html#initiale">Formation Initiale</a></li>
         <li><a href="formation.html#continue">Formation Continue</a></li>
         <li><a href="formation.html#certifiante">Formation Certifiante</a></li>
+        <li><a href="catalogue.html">Catalogue complet</a></li>
         <li><a href="admission-initiale.html">Admission — Initiale</a></li>
         <li><a href="admission-continue.html">Admission — Continue</a></li>
         <li><a href="admission-certifiante.html">Admission — Certifiante</a></li>
