@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos — École Nationale des Finances | RDC</title>
+  <meta name="description" content="Histoire, missions, valeurs et organes de l'École Nationale des Finances de la RDC." />
+  <link rel="stylesheet" href="../css/main.css" />
+<style>
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .value-card { padding: 2rem; background: var(--white); border: 1px solid rgba(12,30,53,.08); border-top: 3px solid var(--gold); }
+    .value-icon { margin-bottom: 1rem; }
+    .value-icon svg { width: 36px; height: 36px; fill: none; stroke: var(--gold); stroke-width: 1.5; }
+    .value-title { font-size: 1.25rem; font-family: var(--f-display); color: var(--navy); margin-bottom: .75rem; }
+    .value-desc { font-size: .9rem; color: var(--text-2); line-height: 1.7; }
+    
+    .organs-missions { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .organ-block { background: rgba(255,255,255,.05); padding: 2.5rem; border-left: 3px solid var(--gold); }
+    .organ-block h4 { font-family: var(--f-display); font-size: 1.5rem; color: var(--gold-2); margin-bottom: 1.5rem; }
+    .organ-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .organ-list li { display: flex; align-items: flex-start; gap: 1rem; color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.6; }
+    .organ-list li::before { content: '•'; color: var(--gold); font-size: 1.4rem; line-height: 1; }
+    
+    @media (max-width: 768px) {
+      .values-grid, .organs-missions { grid-template-columns: 1fr; }
+    }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 800px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid rgba(12,30,53,.08);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: box-shadow var(--t);
+    }
+    .faq-item:hover { box-shadow: var(--sh-sm); }
+    .faq-q {
+      padding: 1.5rem 1.8rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(200,168,75,.1);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--t) var(--ease), background var(--t);
+    }
+    .faq-icon svg { width: 18px; height: 18px; stroke: var(--gold); stroke-width: 2; transition: stroke var(--t); }
+    .faq-item:hover .faq-icon { background: var(--gold); }
+    .faq-item:hover .faq-icon svg { stroke: var(--white); }
+    
+    .faq-a {
+      padding: 0 1.8rem;
+      height: 0;
+      opacity: 0;
+      color: var(--text-2);
+      line-height: 1.8;
+      transition: all var(--t) var(--ease);
+    }
+    
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); }
+    .faq-item.open .faq-icon svg { stroke: var(--white); }
+    .faq-item.open .faq-a {
+      padding: 0 1.8rem 1.5rem;
+      height: auto;
+      opacity: 1;
+      margin-top: -.5rem;
+    }
+
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero" style="background-image:url('../img/batiment-facade.png'); background-size:cover; background-position:center;"><div style="position:absolute;inset:0;background:rgba(12,30,53,.85);"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">›</span><span>À propos</span></div>
+    <div class="page-hero-badge">Depuis 1972</div>
+    <h1 class="page-hero-title">L'ENF en quelques <em>mots</em></h1>
+    <p class="page-hero-lead">Institution publique de formation aux finances publiques, l'ENF forge depuis plus de cinquante ans les compétences des agents de l'État au service d'une gouvernance financière rigoureuse et exemplaire.</p>
+  </div>
+</header>
+
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div class="stat-number" data-target="50" data-suffix="+">0</div><div class="stat-label">Années d'existence</div></div>
+    <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="stat-number" data-target="50" data-suffix="+">0</div><div class="stat-label">Promotions formées</div></div>
+    <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="stat-number" data-target="5000" data-suffix="+">0</div><div class="stat-label">Lauréats formés</div></div>
+    <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div><div class="stat-number" data-target="1000" data-suffix="+">0</div><div class="stat-label">Agents renforcés / an</div></div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="reveal" style="max-width:800px;">
+    <div class="eyebrow">Fondation</div>
+    <h2 class="section-title dark">Texte <em>fondateur</em></h2>
+    <div class="divider-gold"></div>
+
+    <p class="section-lead">L'École Nationale des Finances (ENF) a été créée par l'<strong>Ordonnance-Loi n° 72/045 du 14 septembre 1972</strong>. Institution publique placée sous la haute autorité du Ministre des Finances, elle est le bras stratégique de l'État congolais en matière de formation professionnelle aux finances publiques.</p>
+    <p class="section-lead" style="margin-top:1.2rem;">Depuis sa création, l'ENF a formé plusieurs générations d'agents des administrations financières de la République — inspecteurs des finances, fiscalistes, douaniers, comptables publics — qui œuvrent quotidiennement à la mobilisation des ressources de l'État et à la rationalisation de ses dépenses.</p>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="eyebrow">Nos fondements</div>
+  <h2 class="section-title dark reveal">Valeurs <em>institutionnelles</em></h2>
+  <div class="values-grid" style="margin-top:2.5rem;">
+    <div class="value-card reveal">
+      <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3 class="value-title">Intégrité</h3>
+      <p class="value-desc">La probité morale et la transparence constituent le socle de toute action professionnelle des agents formés par l'ENF. Nous formons des serviteurs de l'État exemplaires.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+      <h3 class="value-title">Discipline</h3>
+      <p class="value-desc">La rigueur dans le travail, le respect des règles et la ponctualité sont des exigences fondamentales de la formation dispensée à l'ENF, reflets des standards de la fonction publique.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2">
+      <div class="value-icon"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+      <h3 class="value-title">Excellence</h3>
+      <p class="value-desc">Chaque module de formation vise l'excellence opérationnelle. Nos lauréats sont formés pour être des références dans leurs domaines respectifs des finances publiques.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-navy">
+  <div class="eyebrow">Gouvernance</div>
+  <h2 class="section-title light reveal">Organes & <em>Missions</em></h2>
+  <div class="organs-missions" style="margin-top:2.5rem;">
+    <div class="organ-block reveal">
+      <h4>Organes de Direction</h4>
+      <ul class="organ-list">
+        <li>Direction Générale — supervision et vision stratégique</li>
+        <li>Direction Académique — élaboration et mise en œuvre des programmes</li>
+        <li>Direction Administrative et Financière — gestion des ressources</li>
+        <li>Conseil Académique — qualité des enseignements</li>
+        <li>Comité de Pilotage — alignement avec le Ministère des Finances</li>
+      </ul>
+    </div>
+    <div class="organ-block reveal reveal-delay-1">
+      <h4>Missions Fondamentales</h4>
+      <ul class="organ-list">
+        <li>Former les agents des administrations financières aux finances publiques</li>
+        <li>Organiser des programmes de formation continue et de renforcement des capacités</li>
+        <li>Certifier les professionnels ayant atteint le niveau d'expertise requis</li>
+        <li>Contribuer à la recherche sur les finances publiques congolaises</li>
+        <li>Développer des partenariats avec les institutions nationales et internationales</li>
+        <li>Accompagner les réformes de la gouvernance financière de la République</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-ivory">
+  <div class="eyebrow">Corps enseignant</div>
+  <h2 class="section-title dark reveal">Des formateurs d'<em>exception</em></h2>
+  <p class="section-lead reveal" style="margin-top:.8rem; margin-bottom:2.5rem;">L'ENF mobilise des praticiens de haut niveau issus des administrations financières congolaises et des institutions académiques internationales.</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+    <div class="value-card reveal">
+      <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+      <h3 class="value-title">Corps national</h3>
+      <p class="value-desc">Inspecteurs des finances, fiscalistes, comptables publics, directeurs centraux et experts issus de la DGI, DGDA, DGRAD, DGTCP et IGF.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+      <h3 class="value-title">Corps international</h3>
+      <p class="value-desc">Professeurs d'universités partenaires, consultants d'organisations internationales (FMI, Banque Mondiale, PNUD) et experts des institutions régionales africaines.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="eyebrow">Questions fréquentes</div>
+  <h2 class="section-title dark reveal">Foire aux <em>questions</em></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q">Qui peut postuler à l'ENF ?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a">Les candidatures varient selon le type de formation. La formation initiale s'adresse aux agents de carrière des administrations financières détenant au moins un diplôme d'État et réussissant le concours national. La formation continue est ouverte à tous les agents du public, du privé et aux particuliers intéressés.</div></div>
+    <div class="faq-item"><div class="faq-q">Quels diplômes délivre l'ENF ?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a">L'ENF délivre le Diplôme Universitaire de Technologie (DUT) et la Licence en Sciences Financières pour la formation initiale, et des Certificats de formation pour les cycles continue et certifiante, reconnus par l'État congolais.</div></div>
+    <div class="faq-item"><div class="faq-q">Quelle est la durée des formations ?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a">La formation initiale dure 2 à 3 ans selon le niveau visé (DUT ou Licence). Les formations continues ont des durées modulaires allant de quelques jours à plusieurs semaines.</div></div>
+    <div class="faq-item"><div class="faq-q">Où se situe l'ENF ?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a">L'ENF est située au N° 32 bis, avenue des Forces Armées, quartier SOCIMAT, Commune de Gombe, Kinshasa, RDC. Tél : +243 82 062 5 809 · Email : <a href="mailto:dgenf@adminfinances.cd">dgenf@adminfinances.cd</a></div></div>
+    <div class="faq-item"><div class="faq-q">Comment se déroule le concours d'entrée ?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a">Le concours national comprend des épreuves écrites sur les mathématiques, l'économie générale, la culture générale et une épreuve de langue. Les avis de concours sont publiés sur le site de l'ENF et dans la presse nationale.</div></div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="../js/main.js"></script>
+<script src="../js/components.js"></script>
+</body>
+</html>

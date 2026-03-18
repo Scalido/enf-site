@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue des Formations — École Nationale des Finances | RDC</title>
+  <meta name="description" content="Catalogue complet des formations continues et certifiantes de l'ENF : finances publiques, fiscalité, douanes, assurances et plus." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    /* ── CATALOGUE STYLES ── */
+
+    /* Filter bar */
+    .cat-filter-bar {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+      justify-content: center;
+      padding: 0 var(--px); margin-bottom: 2.5rem;
+    }
+    .cat-filter-btn {
+      padding: .55rem 1.3rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+      border: 1px solid var(--border); background: var(--white);
+      color: var(--text-2); cursor: pointer;
+      transition: all var(--t) var(--ease);
+      font-family: var(--f-body);
+    }
+    .cat-filter-btn:hover { border-color: var(--gold); color: var(--navy); }
+    .cat-filter-btn.active {
+      background: var(--navy); color: var(--gold);
+      border-color: var(--navy);
+    }
+
+    /* Part headers */
+    .cat-part-header {
+      text-align: center;
+      padding: 2.5rem var(--px) 1.5rem;
+    }
+    .cat-part-badge {
+      display: inline-block;
+      font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600;
+      border: 1px solid rgba(200,168,75,.3);
+      padding: .35rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Accordion container */
+    .cat-accordion-grid {
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 var(--px) 3rem;
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+
+    /* Accordion item */
+    .cat-accordion {
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: box-shadow var(--t), border-color var(--t);
+    }
+    .cat-accordion:hover { border-color: rgba(200,168,75,.4); }
+    .cat-accordion[open] {
+      border-color: var(--gold);
+      box-shadow: var(--sh-sm);
+    }
+
+    .cat-accordion summary {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer; list-style: none;
+      transition: background var(--t);
+    }
+    .cat-accordion summary::-webkit-details-marker { display: none; }
+    .cat-accordion summary::marker { display: none; content: ''; }
+    .cat-accordion summary:hover { background: var(--ivory); }
+    .cat-accordion[open] summary { background: var(--navy); }
+
+    .cat-acc-num {
+      font-family: var(--f-display);
+      font-size: 1.4rem; font-weight: 600;
+      color: var(--gold); opacity: .5;
+      min-width: 2.2rem;
+      transition: color var(--t), opacity var(--t);
+    }
+    .cat-accordion[open] .cat-acc-num { opacity: 1; }
+
+    .cat-acc-title {
+      flex: 1;
+      font-size: .95rem; font-weight: 600;
+      color: var(--navy);
+      transition: color var(--t);
+    }
+    .cat-accordion[open] .cat-acc-title { color: var(--white); }
+
+    .cat-acc-count {
+      font-size: .68rem; letter-spacing: .1em;
+      color: var(--text-3); text-transform: uppercase;
+      transition: color var(--t);
+    }
+    .cat-accordion[open] .cat-acc-count { color: var(--gold); }
+
+    .cat-acc-chevron {
+      width: 20px; height: 20px;
+      stroke: var(--text-3); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform var(--t), stroke var(--t);
+      flex-shrink: 0;
+    }
+    .cat-accordion[open] .cat-acc-chevron {
+      transform: rotate(180deg);
+      stroke: var(--gold);
+    }
+
+    /* Accordion body */
+    .cat-acc-body {
+      padding: 1.5rem 1.5rem 1.5rem 4.2rem;
+      border-top: 1px solid var(--border);
+    }
+    .cat-acc-body .cat-duration {
+      display: inline-block;
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600;
+      background: var(--gold-pale);
+      padding: .3rem .8rem;
+      margin-bottom: 1rem;
+    }
+    .cat-module-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .75rem;
+    }
+    .cat-module-item {
+      display: flex; align-items: flex-start; gap: .6rem;
+      padding: .55rem .75rem;
+      font-size: .85rem; color: var(--text-2);
+      line-height: 1.5;
+      border-left: 2px solid transparent;
+      transition: border-color var(--t), background var(--t);
+    }
+    .cat-module-item:hover {
+      border-left-color: var(--gold);
+      background: var(--ivory);
+    }
+    .cat-module-dot {
+      width: 6px; height: 6px; margin-top: .45rem;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .cat-module-item span { flex: 1; }
+
+    /* Certifiante special */
+    .cat-cert-programs {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: .5rem; margin-top: .75rem;
+    }
+    .cat-cert-pill {
+      text-align: center;
+      padding: .55rem .75rem;
+      font-size: .78rem; font-weight: 600;
+      color: var(--navy);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+    }
+
+    /* Contact footer */
+    .cat-contact-bar {
+      background: var(--navy);
+      padding: 2.5rem var(--px);
+      display: flex; align-items: center; justify-content: center;
+      gap: 3rem; flex-wrap: wrap;
+    }
+    .cat-contact-item {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .85rem; color: rgba(255,255,255,.6);
+    }
+    .cat-contact-item svg {
+      width: 18px; height: 18px; stroke: var(--gold); fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+    .cat-contact-item a { color: var(--gold); transition: color .2s; }
+    .cat-contact-item a:hover { color: var(--gold-2); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cat-module-list { grid-template-columns: 1fr; }
+      .cat-acc-body { padding-left: 1.5rem; }
+      .cat-cert-programs { grid-template-columns: 1fr; }
+      .cat-contact-bar { flex-direction: column; gap: 1.2rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div id="loader"><img src="../img/nouveau-logo-enf-header.png" alt="ENF" class="loader-logo-img"/><div class="loader-bar-wrap"><div class="loader-bar"></div></div></div>
+<div id="progress-bar"></div>
+<div id="nav-slot"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero-content">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a><span class="sep">›</span>
+      <a href="formation.html">Formations</a><span class="sep">›</span>
+      <span style="color:var(--gold);">Catalogue</span>
+    </nav>
+    <div class="page-hero-badge">Offre pédagogique</div>
+    <h1 class="page-hero-title">Catalogue des <em>formations</em></h1>
+    <p class="page-hero-lead">L'École Nationale des Finances propose un ensemble de formations continues et certifiantes destinées aux agents publics, cadres des régies financières, administrations centrales et services provinciaux.</p>
+  </div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<section class="section section-ivory" style="padding-bottom:1.5rem;">
+  <div style="max-width:800px; margin:0 auto; text-align:center;" class="reveal">
+    <p style="font-size:.95rem; color:var(--text-2); line-height:1.85; margin-bottom:1rem;">Ces formations visent le renforcement des capacités techniques, la professionnalisation des pratiques et l'adaptation aux réformes des finances publiques.</p>
+    <div style="display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; font-size:.8rem; color:var(--text-3); letter-spacing:.06em;">
+      <span>🇫🇷 Langue : Français</span>
+      <span>📍 ENF, Kinshasa – RDC</span>
+      <span>⏱ 6 heures / jour</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FILTERS ═══ -->
+<section class="section section-ivory" style="padding-top:1rem; padding-bottom:2rem;">
+  <div class="cat-filter-bar reveal" id="catFilters">
+    <button class="cat-filter-btn active" data-filter="all">Tous les domaines</button>
+    <button class="cat-filter-btn" data-filter="budget">Budget</button>
+    <button class="cat-filter-btn" data-filter="gouvernance">Gouvernance</button>
+    <button class="cat-filter-btn" data-filter="investissements">Investissements</button>
+    <button class="cat-filter-btn" data-filter="dette">Dette</button>
+    <button class="cat-filter-btn" data-filter="audit">Audit</button>
+    <button class="cat-filter-btn" data-filter="comptabilite">Comptabilité</button>
+    <button class="cat-filter-btn" data-filter="fiscalite">Fiscalité</button>
+    <button class="cat-filter-btn" data-filter="douanes">Douanes</button>
+    <button class="cat-filter-btn" data-filter="assurances">Assurances</button>
+    <button class="cat-filter-btn" data-filter="parafiscalite">Parafiscalité</button>
+    <button class="cat-filter-btn" data-filter="ntic">NTIC</button>
+    <button class="cat-filter-btn" data-filter="transversal">Transversal</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PARTIE I — FORMATIONS PAR MODULE
+     ═══════════════════════════════════════════ -->
+<section class="section section-white" style="padding-top:0;">
+  <div class="cat-part-header reveal">
+    <div class="cat-part-badge">Partie I</div>
+    <h2 class="section-title dark">Formations par <em>module</em></h2>
+  </div>
+
+  <div class="cat-accordion-grid" id="catAccordions">
+
+    <!-- 1 -->
+    <details class="cat-accordion reveal" data-domain="budget">
+      <summary>
+        <span class="cat-acc-num">01</span>
+        <span class="cat-acc-title">Finances publiques – Budget</span>
+        <span class="cat-acc-count">13 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Budget Programme (élaboration, programmation, exécution, suivi)</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Loi relative aux finances publiques (LOFIP)</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Budgétisation sensible au genre</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Circuit de la dépense publique</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Décentralisation des finances publiques en RDC</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Programmation financière et analyse des comptes macroéconomiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion axée sur les résultats budgétaires</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Dialogue de gestion (DPAP, RAP)</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Cadre des dépenses à moyen terme (CDMT)</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Évaluation des politiques publiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Bonnes pratiques de gouvernance financière</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion budgétaire et trésorerie</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Finances vertes et durables</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 2 -->
+    <details class="cat-accordion reveal" data-domain="gouvernance">
+      <summary>
+        <span class="cat-acc-num">02</span>
+        <span class="cat-acc-title">Planification stratégique et gouvernance</span>
+        <span class="cat-acc-count">11 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Politiques publiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Leadership et gouvernance</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion de projets</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Nouveau management public</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Suivi-évaluation des politiques publiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contrôle de gestion</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion des institutions de microfinance</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Planification sectorielle (CDMT)</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Réformes des finances publiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Prévisions macroéconomiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Tableaux de bord de performance</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3 -->
+    <details class="cat-accordion reveal" data-domain="investissements">
+      <summary>
+        <span class="cat-acc-num">03</span>
+        <span class="cat-acc-title">Gestion des investissements publics</span>
+        <span class="cat-acc-count">6 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Planification et exécution des projets</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Business plan et financement</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Analyse de rentabilité et gestion des risques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Marchés publics</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Partenariats Public-Privé (PPP)</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gouvernance des infrastructures</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 4 -->
+    <details class="cat-accordion reveal" data-domain="dette">
+      <summary>
+        <span class="cat-acc-num">04</span>
+        <span class="cat-acc-title">Dette publique</span>
+        <span class="cat-acc-count">6 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion de la dette publique</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Stratégies d'endettement</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Négociation des emprunts</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Analyse de soutenabilité</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion des risques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Bases de données de la dette</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 5 -->
+    <details class="cat-accordion reveal" data-domain="audit">
+      <summary>
+        <span class="cat-acc-num">05</span>
+        <span class="cat-acc-title">Audit et contrôle des finances publiques</span>
+        <span class="cat-acc-count">6 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Audit des finances publiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contrôle des lois de finances</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Audit interne</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Lutte contre la corruption</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Audit des systèmes d'information</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Normes internationales (ISC/ISSAI)</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 6 -->
+    <details class="cat-accordion reveal" data-domain="comptabilite">
+      <summary>
+        <span class="cat-acc-num">06</span>
+        <span class="cat-acc-title">Comptabilités</span>
+        <span class="cat-acc-count">6 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Comptabilité publique</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Analyse financière de l'État</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Comptabilité générale de l'État</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Normes IFRS / OHADA</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Comptabilité des entités publiques</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Normes IPSAS</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 7 -->
+    <details class="cat-accordion reveal" data-domain="fiscalite">
+      <summary>
+        <span class="cat-acc-num">07</span>
+        <span class="cat-acc-title">Fiscalité – Législation</span>
+        <span class="cat-acc-count">9 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>TVA</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Impôt sur les sociétés</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Impôt sur les revenus</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Procédures fiscales</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Incitations fiscales</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Prix de transfert</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contrôle fiscal</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Recouvrement des impôts</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fiscalité foncière</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 8 -->
+    <details class="cat-accordion reveal" data-domain="fiscalite">
+      <summary>
+        <span class="cat-acc-num">08</span>
+        <span class="cat-acc-title">Fiscalité – Études de cas</span>
+        <span class="cat-acc-count">6 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Déclarations fiscales</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Droits et obligations des contribuables</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contentieux fiscal</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Politique fiscale en RDC</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fiscalité minière</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fiscalité bancaire et assurances</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 9 -->
+    <details class="cat-accordion reveal" data-domain="douanes">
+      <summary>
+        <span class="cat-acc-num">09</span>
+        <span class="cat-acc-title">Douanes et accises</span>
+        <span class="cat-acc-count">7 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Valeur en douane</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Régimes douaniers</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Procédures de dédouanement</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contentieux douanier</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contrôle du commerce extérieur</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Espèces tarifaires</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Lutte contre la fraude</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 10 -->
+    <details class="cat-accordion reveal" data-domain="assurances">
+      <summary>
+        <span class="cat-acc-num">10</span>
+        <span class="cat-acc-title">Assurances</span>
+        <span class="cat-acc-count">6 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fondamentaux des assurances</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Cadre légal</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Marketing des produits d'assurance</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Souscription et gestion des sinistres</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Réassurance</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Bancassurance</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 11 -->
+    <details class="cat-accordion reveal" data-domain="parafiscalite">
+      <summary>
+        <span class="cat-acc-num">11</span>
+        <span class="cat-acc-title">Parafiscalité et finances provinciales</span>
+        <span class="cat-acc-count">4 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Décentralisation financière</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fiscalité provinciale</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Recettes non fiscales</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Budgets provinciaux</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 12 -->
+    <details class="cat-accordion reveal" data-domain="ntic">
+      <summary>
+        <span class="cat-acc-num">12</span>
+        <span class="cat-acc-title">NTIC (Technologies de l'information)</span>
+        <span class="cat-acc-count">5 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Initiation informatique</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Word, Excel</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Sécurité des données</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Intelligence artificielle</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Logiciels de gestion financière</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 13 -->
+    <details class="cat-accordion reveal" data-domain="transversal">
+      <summary>
+        <span class="cat-acc-num">13</span>
+        <span class="cat-acc-title">Modules transversaux</span>
+        <span class="cat-acc-count">4 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Rédaction administrative</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Communication institutionnelle</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion des ressources humaines</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Anglais administratif</span></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PARTIE II — FORMATIONS CERTIFIANTES
+     ═══════════════════════════════════════════ -->
+<section class="section section-ivory">
+  <div class="cat-part-header reveal">
+    <div class="cat-part-badge">Partie II</div>
+    <h2 class="section-title dark">Formations <em>certifiantes</em></h2>
+  </div>
+
+  <div class="cat-accordion-grid">
+
+    <!-- Cert 1 -->
+    <details class="cat-accordion reveal" data-domain="fiscalite">
+      <summary>
+        <span class="cat-acc-num">01</span>
+        <span class="cat-acc-title">Fiscalité – Vérificateurs simples</span>
+        <span class="cat-acc-count">4 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div class="cat-duration">Durée : 8 semaines (environ 40 jours)</div>
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Administration fiscale</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Procédures fiscales</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Recouvrement</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Exercices pratiques</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Cert 2 -->
+    <details class="cat-accordion reveal" data-domain="douanes">
+      <summary>
+        <span class="cat-acc-num">02</span>
+        <span class="cat-acc-title">Douanes</span>
+        <span class="cat-acc-count">2 certifications</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <!-- Usagers -->
+        <h4 style="font-size:.85rem; color:var(--navy); font-weight:700; margin-bottom:.6rem;">Certification usagers <span style="font-weight:400; color:var(--text-3);">— Durée : 6 mois</span></h4>
+        <div class="cat-module-list" style="margin-bottom:1.5rem;">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Espèces tarifaires</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Régimes douaniers</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Logistique internationale</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fiscalité douanière</span></div>
+        </div>
+        <!-- Expert -->
+        <h4 style="font-size:.85rem; color:var(--navy); font-weight:700; margin-bottom:.6rem;">Certification expert en douane <span style="font-weight:400; color:var(--text-3);">— Durée : 10 à 11 mois</span></h4>
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Valeur en douane</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contentieux</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Contrôle douanier</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Lutte contre la fraude</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Accords internationaux</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Cert 3 -->
+    <details class="cat-accordion reveal" data-domain="assurances">
+      <summary>
+        <span class="cat-acc-num">03</span>
+        <span class="cat-acc-title">Assurances</span>
+        <span class="cat-acc-count">5 modules</span>
+        <svg class="cat-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cat-acc-body">
+        <div style="margin-bottom:1rem;">
+          <span style="font-size:.78rem; font-weight:600; color:var(--navy);">Programmes de certification :</span>
+          <div class="cat-cert-programs">
+            <div class="cat-cert-pill">1 à 3 mois</div>
+            <div class="cat-cert-pill">3 à 6 mois</div>
+            <div class="cat-cert-pill">6 à 9 mois</div>
+          </div>
+        </div>
+        <div class="cat-module-list">
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Fondamentaux des assurances</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Réglementation</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Marketing</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Gestion des sinistres</span></div>
+          <div class="cat-module-item"><div class="cat-module-dot"></div><span>Relation client</span></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT BAR ═══ -->
+<div class="cat-contact-bar">
+  <div class="cat-contact-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>32, Avenue des Forces Armées — Kinshasa, RDC</span>
+  </div>
+  <div class="cat-contact-item">
+    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <a href="mailto:dgenf@adminfinances.cd">dgenf@adminfinances.cd</a>
+  </div>
+  <div class="cat-contact-item">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.12.96.35 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.68a2 2 0 011.72 2.04z"/></svg>
+    <a href="tel:+243981581608">+243 981 581 608</a>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<script src="../js/main.js"></script>
+<script src="../js/components.js"></script>
+<script>
+// ── Filter logic ──
+document.addEventListener('DOMContentLoaded', () => {
+  const btns = document.querySelectorAll('.cat-filter-btn');
+  const items = document.querySelectorAll('.cat-accordion');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(item => {
+        if (f === 'all' || item.dataset.domain === f) {
+          item.style.display = '';
+          item.removeAttribute('hidden');
+        } else {
+          item.style.display = 'none';
+          item.open = false;
+        }
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>

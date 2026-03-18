@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions d'Admission — Formation Continue | ENF</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .admission-hero {
+      padding: 160px 8% 80px;
+      background: var(--navy-mid);
+      position: relative; overflow: hidden;
+    }
+    .admission-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .ref-block {
+      padding: 1.2rem 1.8rem;
+      background: rgba(201,168,76,0.08);
+      border-left: 3px solid var(--gold);
+      margin: 2rem 0;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+    .ref-block strong { color: var(--gold); }
+    .admission-body { padding: 5rem 8%; background: var(--ivory); }
+    .admission-inner { max-width: 960px; margin: 0 auto; }
+    .criteria-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.5rem; }
+    .criteria-list li {
+      display: flex; align-items: flex-start; gap: 1rem;
+      font-size: 0.95rem; color: var(--text-mid); line-height: 1.7;
+      padding: 1rem 1.2rem;
+      background: var(--white);
+      border: 1px solid rgba(11,31,58,0.07);
+      border-left: 3px solid transparent;
+      transition: border-left-color var(--transition), box-shadow var(--transition);
+    }
+    .criteria-list li:hover { border-left-color: var(--gold); box-shadow: var(--shadow-sm); }
+    .criteria-list li .bullet {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 8px;
+    }
+    .criteria-list li strong { color: var(--navy); }
+    .dossier-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .dossier-card {
+      padding: 1.4rem 1.6rem;
+      background: var(--white);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-top: 2px solid var(--gold);
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .dossier-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .dossier-icon { width: 36px; height: 36px; flex-shrink: 0; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .dossier-icon svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; }
+    .dossier-label { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+    .dossier-label strong { display: block; color: var(--navy); margin-bottom: 0.2rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .block-title { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 0.5rem; }
+    .block-title h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); }
+    .block-title-line { flex: 1; height: 1px; background: rgba(11,31,58,0.12); }
+    /* Audience pills */
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top:1.5rem; }
+    .audience-pill {
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(11,31,58,0.1);
+      background: var(--white);
+      transition: all var(--transition);
+    }
+    .audience-pill:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .audience-pill .pill-icon {
+      width: 52px; height: 52px; margin: 0 auto 1rem;
+      background: var(--gold-pale); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .audience-pill .pill-icon svg { width: 22px; height: 22px; stroke: var(--navy); fill: none; }
+    .audience-pill h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .audience-pill p { font-size: 0.8rem; color: var(--text-mid); line-height: 1.6; }
+    .admission-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 4rem; }
+    .admission-nav-card {
+      padding: 2rem; background: var(--navy);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: border-color var(--transition), transform var(--transition);
+      text-decoration: none;
+    }
+    .admission-nav-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .admission-nav-card .nav-badge { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .admission-nav-card .nav-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--white); }
+    .admission-nav-card .nav-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .admission-nav-card .nav-arrow { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; }
+    @media (max-width: 768px) {
+      .audience-grid { grid-template-columns: 1fr; }
+      .admission-nav { grid-template-columns: 1fr; }
+      .dossier-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- Navbar -->
+<div id="nav-slot"></div>
+
+<!-- Hero -->
+<div class="admission-hero" style="background: linear-gradient(135deg, #1A3A5C 0%, #0B2E50 100%);">
+  <div style="position:relative;z-index:1;">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span class="sep">›</span>
+      <a href="formation.html">Formation</a><span class="sep">›</span>
+      <a href="formation.html#continue">Formation Continue</a><span class="sep">›</span>
+      <span>Conditions d'admission</span>
+    </div>
+    <div style="display:inline-block; padding:0.4rem 1rem; border:1px solid rgba(201,168,76,0.4); color:var(--gold); font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; margin:1.5rem 0 1rem;">
+      Renforcement des Capacités
+    </div>
+    <h1 class="page-hero-title" style="font-size:clamp(2rem,5vw,3.8rem);">
+      Conditions d'Admission<br/><em>Formation Continue</em>
+    </h1>
+    <p style="color:rgba(255,255,255,0.6); margin-top:1rem; max-width:650px; line-height:1.9; font-size:0.95rem;">
+      Programme de perfectionnement visant le renforcement des capacités et la mise à jour des compétences. Conformément à la vision de modernisation de l'École, ce cycle est <strong style="color:var(--gold);">ouvert à un public large</strong>.
+    </p>
+  </div>
+</div>
+
+<!-- Corps principal -->
+<section class="admission-body">
+  <div class="admission-inner">
+
+    <!-- ── PUBLIC CIBLE ── -->
+    <div class="block-title reveal">
+      <h3>Public cible</h3>
+      <div class="block-title-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--text-mid); font-size:0.95rem; line-height:1.8; margin-bottom:1.5rem;">
+      La Formation Continue de l'ENF est accessible à un public diversifié. Elle s'adresse à toute personne souhaitant renforcer ses connaissances et compétences en finances publiques, sans distinction préalable de nationalité ou de statut administratif :
+    </p>
+    <div class="audience-grid reveal">
+      <div class="audience-pill">
+        <div class="pill-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+        <h4>Agents du secteur public</h4>
+        <p>Agents et cadres en activité au sein des administrations financières de l'État.</p>
+      </div>
+      <div class="audience-pill">
+        <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <h4>Cadres du secteur privé</h4>
+        <p>Tout professionnel du secteur privé souhaitant se spécialiser dans les finances publiques.</p>
+      </div>
+      <div class="audience-pill">
+        <div class="pill-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h4>Toute personne intéressée</h4>
+        <p>Tout individu ayant un intérêt professionnel ou académique pour les finances publiques.</p>
+      </div>
+    </div>
+
+    <!-- ── CRITÈRES D'ADMISSIBILITÉ ── -->
+    <div class="block-title reveal" style="margin-top:3.5rem;">
+      <h3>Critères d'admissibilité</h3>
+      <div class="block-title-line"></div>
+    </div>
+    <ul class="criteria-list reveal">
+      <li>
+        <div class="bullet"></div>
+        <span><strong>Public cible :</strong> Ouvert aux agents des services publics, aux cadres et agents du <strong>secteur privé</strong>, ainsi qu'à <strong>toute personne intéressée</strong> par la gestion des finances publiques (sans distinction de nationalité ou de statut administratif préalable).</span>
+      </li>
+      <li>
+        <div class="bullet"></div>
+        <span><strong>Prérequis :</strong> Justifier d'un intérêt professionnel ou académique pour les modules de finances publiques proposés.</span>
+      </li>
+      <li>
+        <div class="bullet"></div>
+        <span><strong>Validation — Secteur public :</strong> Autorisation de la hiérarchie recommandée pour la prise en charge administrative et financière.</span>
+      </li>
+      <li>
+        <div class="bullet"></div>
+        <span><strong>Validation — Secteur privé et particuliers :</strong> Inscription directe après validation du profil par la Direction de la Formation Continue de l'ENF.</span>
+      </li>
+    </ul>
+
+    <!-- ── COMPOSITION DU DOSSIER ── -->
+    <div class="block-title reveal" style="margin-top:3.5rem;">
+      <h3>Composition du dossier de candidature</h3>
+      <div class="block-title-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--text-mid); font-size:0.95rem; margin-bottom:0.5rem;">
+      La constitution d'un dossier simplifié est requise pour accéder à la Formation Continue :
+    </p>
+    <div class="dossier-grid reveal">
+      <div class="dossier-card">
+        <div class="dossier-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
+        <div class="dossier-label"><strong>Formulaire d'inscription</strong>Formulaire d'inscription à la formation continue dûment complété.</div>
+      </div>
+      <div class="dossier-card">
+        <div class="dossier-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="dossier-label"><strong>Pièce d'identité</strong>Copie en cours de validité : Carte d'électeur, Passeport ou Carte de service.</div>
+      </div>
+      <div class="dossier-card">
+        <div class="dossier-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="dossier-label"><strong>Curriculum Vitae (Facultatif)</strong>CV actualisé mettant en avant le parcours professionnel et/ou académique.</div>
+      </div>
+    </div>
+
+    <!-- ── NOTE IMPORTANTE ── -->
+    <div style="margin-top:2.5rem; padding:1.8rem 2rem; background:rgba(201,168,76,0.07); border:1px solid rgba(201,168,76,0.2); border-left:4px solid var(--gold);" class="reveal">
+      <div style="font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:0.75rem;">💡 Bon à savoir</div>
+      <p style="color:var(--text-mid); font-size:0.92rem; line-height:1.8;">
+        La Formation Continue de l'ENF est organisée <strong>sur la base d'un catalogue annuel de modules thématiques</strong> ou <strong>sur demande expresse d'une institution ou d'une organisation</strong> souhaitant bénéficier d'un programme sur mesure. Les sessions sont ouvertes tout au long de l'année académique selon les disponibilités et les priorités institutionnelles.
+      </p>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div style="margin-top:3.5rem; padding:2.5rem; background:var(--navy); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;" class="reveal">
+      <div>
+        <div style="font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem;">S'inscrire ou se renseigner</div>
+        <p style="color:rgba(255,255,255,0.75); font-size:0.9rem; line-height:1.7; max-width:480px;">
+          Pour obtenir le catalogue des modules disponibles ou initier une inscription, contactez la Direction de la Formation Continue de l'ENF.
+        </p>
+      </div>
+      <a href="contact.html" class="btn-primary">Nous contacter →</a>
+    </div>
+
+    <!-- ── NAVIGATION VERS AUTRES ADMISSIONS ── -->
+    <div style="margin-top:4rem;" class="reveal">
+      <span class="section-eyebrow" style="margin-bottom:1.5rem;">Autres cycles de formation</span>
+      <p style="color:var(--text-mid); margin-bottom:2rem; font-size:0.9rem;">Consultez également les conditions d'admission pour nos autres programmes :</p>
+      <div class="admission-nav">
+        <a href="admission-initiale.html" class="admission-nav-card">
+          <div class="nav-badge">Formation Initiale</div>
+          <div class="nav-title">Conditions d'admission — Cycle Long</div>
+          <div class="nav-desc">Accès sur concours national pour les agents de carrière des administrations financières. Diplôme d'État requis.</div>
+          <div class="nav-arrow">Consulter <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+        <a href="admission-certifiante.html" class="admission-nav-card">
+          <div class="nav-badge">Formation Certifiante</div>
+          <div class="nav-title">Conditions d'admission — Spécialisation</div>
+          <div class="nav-desc">Haute spécialisation pour cadres des institutions étatiques et partenaires stratégiques. Admission sur dossier.</div>
+          <div class="nav-arrow">Consulter <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<div id="footer-slot"></div>
+<script src="../js/main.js"></script>
+<script src="../js/components.js"></script>
+</body>
+</html>

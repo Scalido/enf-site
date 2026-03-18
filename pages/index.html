@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENF — École Nationale des Finances | République Démocratique du Congo</title>
+  <meta name="description" content="L'École Nationale des Finances forme les experts des finances publiques de la RDC depuis 1972." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    /* ── HERO ── */
+    .hero {
+      position:relative; min-height:100vh;
+      display:flex; align-items:center;
+      overflow:hidden;
+    }
+    .hero-photo {
+      position:absolute; inset:0;
+      background:url('../img/bureau-dossier.png') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(105deg, rgba(12,30,53,.93) 45%, rgba(12,30,53,.62) 100%);
+    }
+    .hero-content {
+      position:relative; z-index:2;
+      padding: 0 8%; max-width:760px;
+      padding-top:120px;
+    }
+    .hero-eyebrow {
+      display:inline-flex; align-items:center; gap:.6rem;
+      font-size:.65rem; letter-spacing:.32em; text-transform:uppercase;
+      color:var(--gold); font-weight:600; margin-bottom:1.4rem;
+    }
+    .hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); display:block; }
+    .hero-h1 {
+      font-family:var(--f-display); font-size:clamp(2.8rem,5.5vw,5rem);
+      font-weight:300; color:#fff; line-height:1.12; margin-bottom:1.5rem;
+    }
+    .hero-h1 em { font-style:italic; color:var(--gold-2); }
+    .hero-lead {
+      font-size:1rem; line-height:1.85; color:rgba(255,255,255,.68);
+      max-width:540px; margin-bottom:2.4rem;
+    }
+    .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; padding-bottom:4rem; }
+    .hero-scroll {
+      position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+      z-index:2; display:flex; flex-direction:column; align-items:center; gap:.5rem;
+      font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35);
+    }
+    .hero-scroll-line {
+      width:1px; height:40px; background:linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollDrop 2s infinite;
+    }
+    @keyframes scrollDrop { 0%,100%{transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1);} }
+
+    
+    /* ── BLOC PRÉSIDENTIEL ── */
+    .president-block {
+      background: var(--navy);
+      padding: 0;
+      display: grid;
+      grid-template-columns: 55% 1fr;
+      min-height: 480px;
+      border-bottom: 1px solid rgba(200,168,75,.15);
+    }
+    .president-photo-col {
+      position: relative;
+      overflow: hidden;
+    }
+    .president-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      filter: grayscale(10%) brightness(.92);
+    }
+    .president-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--navy) 95%);
+    }
+    .president-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3.5rem 4rem 3.5rem 2rem;
+    }
+    .president-rank {
+      font-size: .6rem; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .president-rank::before { content:''; width:28px; height:1px; background:var(--gold); }
+    .president-quote-mark {
+      font-family: var(--f-display); font-size: 5rem;
+      color: var(--gold); opacity: .2; line-height: .8;
+      margin-bottom: .5rem;
+    }
+    .president-quote-text {
+      font-family: var(--f-display);
+      font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+      font-style: italic;
+      color: rgba(255,255,255,.9);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .president-name {
+      font-family: var(--f-display);
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 600;
+      margin-top: 1.5rem;
+    }
+    .president-title {
+      font-size: .68rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-top: .35rem;
+    }
+    /* ── AUTHORITY CARDS ── */
+    .authority-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    }
+    .auth-card {
+      position: relative; overflow: hidden; min-height: 380px;
+      display: flex; align-items: flex-end;
+    }
+    .auth-photo {
+      position: absolute; inset: 0; background-size: cover; background-position: center top;
+      transition: transform .6s ease;
+    }
+    .auth-card:hover .auth-photo { transform: scale(1.04); }
+    .auth-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,30,53,.95) 30%, transparent 70%);
+    }
+    .auth-content { position: relative; z-index: 1; padding: 2rem 2.5rem; }
+    .auth-role { font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
+    .auth-name { font-family: var(--f-display); font-size: 1.3rem; color: #fff; font-weight: 600; margin-bottom: .7rem; }
+    .auth-quote { font-size: .82rem; line-height: 1.75; color: rgba(255,255,255,.62); }
+
+
+    /* ── AUTHORITY CARDS ── */
+    .authority-row {
+      display:grid; grid-template-columns:1fr 1fr; gap:0;
+    }
+    .auth-card {
+      position:relative; overflow:hidden; min-height:480px;
+      display:flex; align-items:flex-end;
+    }
+    .auth-photo {
+      position:absolute; inset:0; background-size:cover; background-position:center top;
+      transition:transform .6s ease;
+    }
+    .auth-card:hover .auth-photo { transform:scale(1.04); }
+    .auth-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(12,30,53,.95) 30%, transparent 70%);
+    }
+    .auth-content { position:relative; z-index:1; padding:2.5rem; }
+    .auth-role { font-size:.65rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .auth-name { font-family:var(--f-display); font-size:1.4rem; color:#fff; font-weight:600; margin-bottom:.8rem; }
+    .auth-quote { font-size:.85rem; line-height:1.75; color:rgba(255,255,255,.65); }
+
+    /* ── DG SECTION ── */
+    .dg-section {
+      display:grid; grid-template-columns:400px 1fr; align-items:stretch; gap:0;
+    }
+    .dg-photo-col {
+      position:relative; overflow:hidden;
+    }
+    .dg-photo {
+      width:100%; height:100%; object-fit:cover; object-position:center top; display:block;
+    }
+    .dg-photo-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right, transparent 70%, var(--cream) 100%);
+    }
+    .dg-content { padding:4rem; background:var(--cream); display:flex; flex-direction:column; justify-content:center; }
+    .dg-eyebrow { font-size:.65rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:1rem; }
+    .dg-title { font-family:var(--f-display); font-size:clamp(1.5rem,2.5vw,2.2rem); color:var(--navy); line-height:1.25; margin-bottom:1.5rem; }
+    .dg-title em { font-style:italic; }
+    .dg-text { font-size:.9rem; line-height:1.9; color:var(--text-2); margin-bottom:1rem; }
+    .dg-sig { font-family:var(--f-display); font-size:1.1rem; font-style:italic; color:var(--navy); margin-top:1.5rem; }
+    .dg-sig-role { font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-2); margin-top:.3rem; }
+
+    /* ── PROGRAMMES ── */
+    .prog-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--navy);
+    }
+    .prog-card {
+      position:relative; overflow:hidden; min-height:340px;
+      display:flex; align-items:flex-end; background:var(--navy);
+    }
+    .prog-photo {
+      position:absolute; inset:0; background-size:cover; background-position:center;
+      opacity:.45; transition:opacity .5s, transform .5s;
+    }
+    .prog-card:hover .prog-photo { opacity:.6; transform:scale(1.04); }
+    .prog-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(12,30,53,.95) 40%, transparent 100%); }
+    .prog-body { position:relative; z-index:1; padding:2rem; }
+    .prog-num { font-size:.62rem; letter-spacing:.25em; color:var(--gold); text-transform:uppercase; margin-bottom:.5rem; }
+    .prog-name { font-family:var(--f-display); font-size:1.6rem; color:#fff; font-weight:300; margin-bottom:.6rem; }
+    .prog-name em { font-style:italic; color:var(--gold-2); }
+    .prog-desc { font-size:.82rem; line-height:1.7; color:rgba(255,255,255,.6); max-height:0; overflow:hidden; transition:max-height .4s, opacity .4s; opacity:0; }
+    .prog-card:hover .prog-desc { max-height:100px; opacity:1; }
+    .prog-link { display:inline-block; margin-top:1rem; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); border-bottom:1px solid rgba(200,168,75,.4); padding-bottom:2px; }
+
+    /* ── NEWS ── */
+    .news-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .news-card { background:#fff; overflow:hidden; border:1px solid rgba(12,30,53,.07); transition:transform .3s, box-shadow .3s; }
+    .news-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+    .news-img { width:100%; height:200px; object-fit:cover; display:block; }
+    .news-body { padding:1.4rem; }
+    .news-cat { font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+    .news-title { font-family:var(--f-display); font-size:1.1rem; color:var(--navy); margin:.5rem 0; line-height:1.35; }
+    .news-date { font-size:.72rem; color:var(--text-2); }
+
+    /* ── PARTNERS ── */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
+      justify-items: center;
+      padding: 0 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .partner-logo-item {
+      width: 100%;
+      height: 90px;
+      padding: 1rem;
+      background: var(--white);
+      border: 1px solid rgba(12,30,53,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+      text-decoration: none;
+    }
+    a.partner-logo-item:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .partner-logo-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(0.65);
+      transition: filter var(--transition);
+    }
+    a.partner-logo-item:hover .partner-logo-img {
+      filter: grayscale(0%) opacity(1);
+    }
+    @media (max-width: 1024px) {
+      .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    }
+    @media (max-width: 768px) {
+      .partners-grid { grid-template-columns: repeat(3, 1fr); }
+      .partner-logo-item { height: 80px; padding: .75rem; }
+    }
+    @media (max-width: 480px) {
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── TESTI ── */
+    .testi-wrap { position:relative; overflow:hidden; }
+    .testi-slides { display:flex; transition:transform .5s var(--ease); }
+    .testi-slide { min-width:100%; padding:0 8%; box-sizing:border-box; }
+    .testi-text { font-family:var(--f-display); font-size:clamp(1.1rem,2vw,1.5rem); font-style:italic; color:var(--white); line-height:1.7; }
+    .testi-name { font-weight:600; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-top:1.2rem; }
+    .testi-role { font-size:.76rem; color:var(--text-2); margin-top:.2rem; }
+    .testi-bars { display:flex; gap:.5rem; margin-top:2rem; }
+    .testi-bar { height:2px; width:32px; background:rgba(12,30,53,.15); cursor:pointer; transition:background .3s, width .3s; }
+    .testi-bar.active { background:var(--gold); width:56px; }
+
+    /* ── BUILDING STRIP ── */
+    .building-strip {
+      display:grid; grid-template-columns:1fr 1fr; height:360px;
+    }
+    .building-strip-photo {
+      background-size:cover; background-position:center;
+    }
+
+    /* ══ RESPONSIVE MOBILE ══ */
+    @media (max-width: 768px) {
+
+      /* President block → stack vertical, photo on top */
+      .president-block {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .president-photo-col {
+        height: 280px;
+      }
+      .president-photo-overlay {
+        background: linear-gradient(to bottom, transparent 50%, var(--navy) 100%);
+      }
+      .president-content {
+        padding: 2rem 1.5rem 2.5rem;
+      }
+      .president-quote-text {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+      }
+
+      /* Authority cards → stack */
+      .authority-row { grid-template-columns: 1fr; }
+      .auth-card { min-height: 300px; }
+
+      /* DG section → stack, photo first */
+      .dg-section {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+      }
+      .dg-photo-col { height: 320px; min-height: unset; }
+      .dg-photo-overlay { display: none; }
+      .dg-content { padding: 2rem 1.5rem; }
+
+      /* Programs grid → 1 col */
+      .prog-grid { grid-template-columns: 1fr; }
+
+      /* News grid → 1 col */
+      .news-grid { grid-template-columns: 1fr; }
+
+      /* Testimonials */
+      .testi-track { padding: 2rem 1.5rem; }
+      .testi-text { font-size: clamp(1rem, 4vw, 1.3rem); }
+      .testi-quote-mark { font-size: 3rem; }
+
+      /* CTA section */
+      .cta-section { padding: 3rem 1.5rem; text-align: center; }
+      .cta-section .hero-ctas { justify-content: center; }
+
+      /* Hero */
+      .hero-content { padding: 130px 1.5rem 0; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .hero-ctas a { width: 100%; text-align: center; justify-content: center; }
+
+      /* Partners carousel — reduce height */
+      .partners-track-wrap { padding: 1.5rem 0; }
+
+      /* Paroles section header 
+         We only apply horizontal padding if the section isn't explicitly set to padding:0 
+      */
+      section.section-white:not([style*="padding:0"]) { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+      section.section-white[style*="padding:0;"] { padding: 0 !important; }
+    }
+
+    @media (max-width: 480px) {
+      .president-photo-col { height: 220px; }
+      .dg-photo-col { height: 260px; }
+      .auth-card { min-height: 260px; }
+      .president-content { padding: 1.5rem 1.2rem 2rem; }
+      .dg-content { padding: 1.5rem 1.2rem; }
+    }
+  
+    /* ── MOBILE RESPONSIVENESS (Ministres & Président) ── */
+    @media (max-width: 900px) {
+      .president-block { grid-template-columns: 1fr; min-height: auto; }
+      .president-photo-col { height: 400px; }
+      .president-photo-overlay { background: linear-gradient(to bottom, transparent 50%, var(--navy) 95%); }
+      .president-content { padding: 2rem 2.5rem 3.5rem; text-align: center; align-items: center; }
+      .president-quote-text { font-size: 1.25rem; }
+      
+      .authority-row { grid-template-columns: 1fr; }
+      .auth-card { min-height: 340px; }
+      
+      .dg-block-split { grid-template-columns: 1fr; }
+      .dg-photo-wrap { height: 360px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="nav-slot"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Depuis 1972 · Kinshasa, RDC</div>
+    <h1 class="hero-h1">Former les gardiens des <em>finances publiques</em><br/>de la République</h1>
+    <p class="hero-lead">Institution publique placée sous la haute autorité du Ministre des Finances, l'ENF forme et certifie les professionnels qui assurent la mobilisation et la gestion des ressources de l'État congolais.</p>
+    <div class="hero-ctas">
+      <a href="formation.html" class="btn-primary">Découvrir nos formations</a>
+      <a href="about.html" class="btn-outline">En savoir plus sur l'ENF</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- ═══ CITATION PRÉSIDENTIELLE ═══ -->
+<div style="height:4px;background:linear-gradient(90deg, var(--gold) 0%, var(--gold-2) 50%, transparent 100%);"></div>
+<section class="section-white" style="padding:3.5rem 8% 2.5rem;">
+  <div class="reveal">
+    <div class="eyebrow">Paroles d'autorités</div>
+    <h2 class="section-title dark">Ils s'expriment sur <em>l'ENF</em></h2>
+  </div>
+</section>
+<div class="president-block reveal">
+  <div class="president-photo-col">
+    <img src="../img/nouveau-president.jpg" alt="S.E. Félix Antoine Tshisekedi Tshilombo" class="president-photo"/>
+    <div class="president-photo-overlay"></div>
+  </div>
+  <div class="president-content">
+    <div class="president-rank">Chef de l'État ·</div>
+    <div class="president-quote-mark">"</div>
+    <div class="president-quote-text">La formation des agents de l'État est au cœur de notre ambition de bonne gouvernance. L'ENF incarne cette exigence avec rigueur et détermination.</div>
+    <div class="president-name">S.E. Félix Antoine Tshisekedi Tshilombo</div>
+    <div class="president-title">Président de la République Démocratique du Congo</div>
+  </div>
+</div>
+
+
+
+</div>
+
+<!-- ═══ AUTORITÉS ═══ -->
+<section class="section-white" style="padding:0;">
+  <div class="authority-row">
+    <div class="auth-card">
+      <div class="auth-photo" style="background-image:url('../img/suminwa.jpg');"></div>
+      <div class="auth-overlay"></div>
+      <div class="auth-content">
+        <div class="auth-role">Première Ministre</div>
+        <div class="auth-name">S.E. Judith Suminwa Tuluka</div>
+        <div class="auth-quote">L'ENF constitue un pilier stratégique de la réforme des finances publiques congolaises. Ses lauréats portent la transformation de notre administration.</div>
+      </div>
+    </div>
+    <div class="auth-card">
+      <div class="auth-photo" style="background-image:url('../img/fwamba.jpg');"></div>
+      <div class="auth-overlay"></div>
+      <div class="auth-content">
+        <div class="auth-role">Ministre des Finances</div>
+        <div class="auth-name">M. Doudou Fwamba Likunde</div>
+        <div class="auth-quote">Renforcer les capacités des agents des régies financières est notre priorité. L'ENF est l'instrument de cette ambition de modernisation de l'État.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div style="height:1px;background:rgba(12,30,53,.1);margin:0 8%;"></div>
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-number" data-target="52" data-suffix=" ans">0</div><div class="stat-label">D'histoire institutionnelle</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="50" data-suffix="+">0</div><div class="stat-label">Promotions formées</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="10000" data-suffix="+">0</div><div class="stat-label">Apprenants formés</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="15000" data-suffix="+">0</div><div class="stat-label">Agents renforcés</div></div>
+  </div>
+</section>
+
+<!-- ═══ MOT DE LA DG ═══ -->
+<section class="dg-section reveal">
+  <div class="dg-photo-col">
+    <img src="../img/enf-dg.jpg" alt="Mme Yvette BARHASHISHWA SHABANI — Directrice Générale de l'ENF" class="dg-photo" />
+    <div class="dg-photo-overlay"></div>
+  </div>
+  <div class="dg-content">
+    <div class="dg-eyebrow">Message de la Direction Générale</div>
+    <h2 class="dg-title">L'ENF au service de l'<em>excellence</em> congolaise</h2>
+    <p class="dg-text">L'École Nationale des Finances est bien plus qu'une institution de formation. Elle est le creuset où se forge la nouvelle génération des cadres qui œuvrent, au quotidien, pour une gestion transparente et efficace des ressources publiques de notre pays.</p>
+    <p class="dg-text">Notre ambition est claire : accompagner chaque apprenant vers un niveau d'expertise qui répond aux standards internationaux, tout en ancrant notre démarche dans les réalités et les priorités de la République Démocratique du Congo.</p>
+    <div class="dg-sig">Mme Yvette BARHASHISHWA SHABANI</div>
+    <div class="dg-sig-role">Directrice Générale · École Nationale des Finances</div>
+  </div>
+</section>
+
+<!-- ═══ ACTUALITÉS ═══ -->
+<section class="section section-ivory">
+  <div class="eyebrow">Vie de l'ENF</div>
+  <h2 class="section-title dark reveal">Dernières <em>actualités</em></h2>
+  <div class="news-grid" style="margin-top:2.5rem;">
+    <a href="actu-igf.html" class="news-card reveal" style="display:block; color:inherit; text-decoration:none;">
+      <img src="../img/actu_img_1.jpg" alt="IGF Formation" class="news-img" />
+      <div class="news-body">
+        <div class="news-cat">Formation Continue</div>
+        <div class="news-title">Programme de Formation au profit des agents de l’Inspection Générale des Finances.</div>
+        <div class="news-date">Mars 2025</div>
+      </div>
+    </a>
+    <a href="actu-andragogie.html" class="news-card reveal reveal-delay-1" style="display:block; color:inherit; text-decoration:none;">
+      <img src="../img/actu_img_2.png" alt="Andragogie" class="news-img" />
+      <div class="news-body">
+        <div class="news-cat">Partenariat</div>
+        <div class="news-title">Formation des formateurs en andragogie : l’ENF renforce les compétences pédagogiques</div>
+        <div class="news-date">Février 2025</div>
+      </div>
+    </a>
+    <a href="actu-environnement.html" class="news-card reveal reveal-delay-2" style="display:block; color:inherit; text-decoration:none;">
+      <img src="../img/actu_img_3.jpg" alt="Environnement" class="news-img" />
+      <div class="news-body">
+        <div class="news-cat">Infrastructure</div>
+        <div class="news-title">Amélioration de l’environnement de travail : actions engagées au sein de l’ENF</div>
+        <div class="news-date">Janvier 2025</div>
+      </div>
+    </a>
+  </div>
+  <div style="text-align:center; margin-top:3rem;">
+    <a href="actualites.html" class="btn-outline" style="border-color:var(--navy); color:var(--navy);">Toutes les actualités →</a>
+  </div>
+</section>
+
+<!-- ═══ PROGRAMMES ═══ -->
+<section style="padding:5rem 0 0; background:var(--navy);">
+  <div style="padding:0 8%; margin-bottom:2.5rem;" class="reveal">
+    <div class="eyebrow" style="color:var(--gold);">Offre académique</div>
+    <h2 class="section-title light">Trois cycles de <em>formation</em></h2>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card">
+      <div class="prog-photo" style="background-image:url('../img/cours-1.png');"></div>
+      <div class="prog-overlay"></div>
+      <div class="prog-body">
+        <div class="prog-num">01 · Formation</div>
+        <div class="prog-name">Formation <em>Initiale</em></div>
+        <div class="prog-desc">Cycle long sur concours national. Cinq filières : Assurances, Budget, Douanes, Impôts, Recettes Non Fiscales. Diplôme d'État reconnu.</div>
+        <a href="formation.html#initiale" class="prog-link">En savoir plus →</a>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-photo" style="background-image:url('../img/cours-2.png');"></div>
+      <div class="prog-overlay"></div>
+      <div class="prog-body">
+        <div class="prog-num">02 · Formation</div>
+        <div class="prog-name">Formation <em>Continue</em></div>
+        <div class="prog-desc">Modules courts pour agents en poste. Six domaines : Finances Publiques, Fiscalité, Douanes, Contrôle, Assurances, Management.</div>
+        <a href="formation.html#continue" class="prog-link">En savoir plus →</a>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-photo" style="background-image:url('../img/atelier-enf.png');"></div>
+      <div class="prog-overlay"></div>
+      <div class="prog-body">
+        <div class="prog-num">03 · Formation</div>
+        <div class="prog-name">Formation <em>Certifiante</em></div>
+        <div class="prog-desc">Programmes de haute spécialisation sur demande ou au catalogue. Certificat reconnu par l'État pour les professionnels du secteur financier.</div>
+        <a href="formation.html#certifiante" class="prog-link">En savoir plus →</a>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-photo" style="background-image:url('../img/batiment-facade.jpg');"></div>
+      <div class="prog-overlay"></div>
+      <div class="prog-body">
+        <div class="prog-num">04 · Admissions</div>
+        <div class="prog-name">Conditions d'<em>admission</em></div>
+        <div class="prog-desc">Consultez les critères d'admissibilité, les pièces à fournir et les procédures d'inscription pour chaque cycle de formation.</div>
+        <a href="admission-initiale.html" class="prog-link">Voir les conditions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══ PARTENAIRES ═══ -->
+<section class="section section-ivory">
+  <div class="eyebrow" style="justify-content:center;">Réseau institutionnel</div>
+  <h2 class="section-title dark reveal" style="text-align:center;">Nos <em>partenaires</em></h2>
+  <p style="text-align:center; color:var(--text-2); margin:.5rem auto 2.5rem; max-width:560px; font-size:.9rem;" class="reveal">Administrations partenaires et bénéficiaires des actions de formation de l'ENF.</p>
+  <div class="partners-grid reveal">
+    <a href="https://pnc-rdc.com/" target="_blank" class="partner-logo-item"><img src="../img/rdc police-logo.webp" alt="PNC" class="partner-logo-img" /></a>
+    <a href="https://www.undp.org/fr/drcongo" target="_blank" class="partner-logo-item"><img src="../img/PNUD-logo.webp" alt="PNUD" class="partner-logo-img" /></a>
+    <a href="https://snel.cd/" target="_blank" class="partner-logo-item"><img src="../img/logo-snel.webp" alt="SNEL" class="partner-logo-img" /></a>
+    <a href="https://ogefremsite.org/" target="_blank" class="partner-logo-item"><img src="../img/OGEFREM-logo.webp" alt="OGEFREM" class="partner-logo-img" /></a>
+    <a href="https://senarec.cd/" target="_blank" class="partner-logo-item"><img src="../img/Logo-SENAREC.webp" alt="SENAREC" class="partner-logo-img" /></a>
+    <a href="https://ena.cd/" target="_blank" class="partner-logo-item"><img src="../img/logo-ENA.webp" alt="ENA" class="partner-logo-img" /></a>
+    <a href="https://www.igf.gouv.cd/" target="_blank" class="partner-logo-item"><img src="../img/logo-IGF.webp" alt="IGF" class="partner-logo-img" /></a>
+    <a href="https://cspp-finances.gouv.cd/" target="_blank" class="partner-logo-item"><img src="../img/logo-cspp.webp" alt="CSPP" class="partner-logo-img" /></a>
+    <a href="https://arca.cd/" target="_blank" class="partner-logo-item"><img src="../img/logo_arca.webp" alt="ARCA" class="partner-logo-img" /></a>
+    <a href="https://coref.cd/" target="_blank" class="partner-logo-item"><img src="../img/logo-COREF.webp" alt="COREF" class="partner-logo-img" /></a>
+    <div class="partner-logo-item"><img src="../img/cofed_logo.webp" alt="COFED" class="partner-logo-img" style="filter:grayscale(0%) opacity(1);" /></div>
+    <a href="https://www.dgtcp.cd/" target="_blank" class="partner-logo-item"><img src="../img/tresor public- logo.webp" alt="DGTCP" class="partner-logo-img" /></a>
+    <a href="http://www.dgrad.cd/" target="_blank" class="partner-logo-item"><img src="../img/DGRAD-logo.webp" alt="DGRAD" class="partner-logo-img" /></a>
+    <a href="http://www.dgrad.cd/" target="_blank" class="partner-logo-item"><img src="../img/DGRAD-logo-1.webp" alt="DGRAD" class="partner-logo-img" /></a>
+    <a href="https://dgi.gouv.cd/" target="_blank" class="partner-logo-item"><img src="../img/Logodgi-768x768.webp" alt="DGI" class="partner-logo-img" /></a>
+  </div>
+</section>
+
+<!-- ═══ TÉMOIGNAGES ═══ -->
+<section class="section section-navy">
+  <div class="eyebrow" style="justify-content:center;">Ils témoignent</div>
+  <h2 class="section-title light reveal" style="text-align:center; margin-bottom:3rem;">La parole à nos <em>lauréats</em></h2>
+  <div class="testi-wrap" id="testiWrap">
+    <div class="testi-slides" id="testiSlides">
+      <div class="testi-slide">
+        <div class="testi-text">"La formation reçue à l'ENF m'a donné les outils conceptuels et pratiques pour exercer mes fonctions d'inspecteur avec rigueur et intégrité. C'est une école qui forge le caractère autant que la compétence."</div>
+        <div class="testi-name">Marc KAMBEMBA</div>
+        <div class="testi-role">Inspecteur des Finances · Ministère des Finances</div>
+      </div>
+      <div class="testi-slide">
+        <div class="testi-text">"Grâce à l'ENF, j'ai pu acquérir une expertise pointue en fiscalité qui m'a permis d'évoluer rapidement au sein de la DGI. Les formateurs sont de vrais professionnels du terrain."</div>
+        <div class="testi-name">Sarah KAYEMBE</div>
+        <div class="testi-role">Fiscaliste principale · Direction Générale des Impôts</div>
+      </div>
+      <div class="testi-slide">
+        <div class="testi-text">"L'ENF n'est pas seulement une école. C'est un réseau professionnel, une communauté de compétences qui continue de me soutenir tout au long de ma carrière dans la gestion de la dette publique."</div>
+        <div class="testi-name">Jean-Paul MBUYI</div>
+        <div class="testi-role">Spécialiste Gestion de la Dette · DGTCP</div>
+      </div>
+    </div>
+    <div class="testi-bars" style="justify-content:center;">
+      <div class="testi-bar active" onclick="goTesti(0)"></div>
+      <div class="testi-bar" onclick="goTesti(1)"></div>
+      <div class="testi-bar" onclick="goTesti(2)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section style="padding:5rem 8%; background:var(--cream); display:grid; grid-template-columns:1fr auto; align-items:center; gap:2rem; flex-wrap:wrap;" class="reveal">
+  <div>
+    <div class="eyebrow">Rejoindre l'ENF</div>
+    <h2 class="section-title dark" style="margin-top:.5rem;">Commencez votre parcours d'<em>excellence</em></h2>
+  </div>
+  <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+    <a href="admission-initiale.html" class="btn-primary">Conditions d'admission</a>
+    <a href="contact.html" class="btn-ghost">Nous contacter →</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div id="footer-slot"></div>
+
+<script>
+let testiIdx = 0;
+function goTesti(i) {
+  testiIdx = i;
+  document.getElementById('testiSlides').style.transform = `translateX(-${i * 100}%)`;
+  document.querySelectorAll('.testi-bar').forEach((b, j) => b.classList.toggle('active', j === i));
+}
+setInterval(() => goTesti((testiIdx + 1) % 3), 5000);
+</script>
+<script src="../js/main.js"></script>
+<script src="../js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formation — École Nationale des Finances | RDC</title>
+  <meta name="description" content="Trois cycles de formation aux finances publiques : initiale, continue et certifiante. Découvrez l'offre pédagogique complète de l'ENF." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .formation-inner { max-width: 1100px; margin: 0 auto; }
+    .formation-split { display: grid; gap: 5rem; align-items: center; }
+    .formation-split.img-right { grid-template-columns: 1fr 420px; }
+    .formation-split.img-left  { grid-template-columns: 420px 1fr; }
+
+    /* ── Photo frame ── */
+    .formation-img-wrap {
+      position: relative;
+      padding: 1.2rem 1.2rem 2.4rem 0;
+    }
+    .formation-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 0 1.2rem;
+      border: 2px solid var(--gold);
+      opacity: .35;
+      border-radius: var(--r);
+      transform: translate(10px, 10px);
+      z-index: 0;
+    }
+    .formation-img-wrap.light::before { opacity: .2; }
+    .formation-img-wrap.dark::before  { border-color: var(--gold); opacity: .45; }
+    .formation-img {
+      position: relative; z-index: 1;
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--r);
+      box-shadow: var(--sh-lg);
+      display: block;
+    }
+    .formation-img-badge {
+      position: absolute; z-index: 2;
+      bottom: .6rem; right: -.4rem;
+      background: var(--navy);
+      color: var(--gold);
+      font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+      padding: .55rem 1rem;
+      border-left: 2px solid var(--gold);
+    }
+    .formation-img-badge.light-badge {
+      background: var(--ivory);
+      color: var(--navy);
+      border-left-color: var(--gold);
+    }
+
+    .diploma-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+    .diploma-card { text-align: center; padding: 1.8rem 2.2rem; border: 1px solid rgba(200,168,75,.25); min-width: 180px; }
+    .diploma-name { font-family: var(--f-display); font-size: 2rem; color: var(--gold); font-weight: 600; }
+    .diploma-sub  { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: .4rem; }
+    @media (max-width: 768px) {
+      .formation-split.img-right,
+      .formation-split.img-left { grid-template-columns: 1fr; }
+      .formation-img-wrap { padding: 1rem 0 1.8rem 1rem; }
+      .formation-img-wrap::before { inset: 0 1rem 0 0; }
+    }
+  
+    /* ── Missing CSS Additions ── */
+    .specialties-grid { display: grid; gap: .75rem; margin-top: 1.5rem; }
+    .specialty-card {
+      display: flex; align-items: center; gap: 1rem;
+      padding: .85rem 1.2rem;
+      background: var(--white);
+      border: 1px solid rgba(12,30,53,.08);
+      border-radius: var(--r);
+    }
+    .specialty-num {
+      font-family: var(--f-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      opacity: .6;
+    }
+    .specialty-name {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .highlight-box {
+      padding: 1.2rem;
+      background: rgba(200,168,75,.08);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+    .highlight-box-dark {
+      padding: 1.2rem;
+      background: rgba(255,255,255,.04);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+
+    
+    .formation-block { padding: var(--py) var(--px); }
+    .formation-badge {
+      display: inline-block;
+      padding: .6rem 1.2rem;
+      background: rgba(12,30,53,.06);
+      color: var(--navy);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    
+    .diplomas-block { padding: var(--py) var(--px); background: var(--navy-2); }
+
+    </style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero" style="background-image:url('../img/cours-2.png'); background-size:cover; background-position:center;">
+  <div style="position:absolute;inset:0;background:rgba(12,30,53,.88);"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">›</span><span>Formation</span></div>
+    <div class="page-hero-badge">Offre pédagogique</div>
+    <h1 class="page-hero-title"><em>Trois cycles</em> de formation</h1>
+    <p class="page-hero-lead">La formation constitue un levier central de la mission de l'ENF. Elle vise la professionnalisation des personnes appelées à intervenir dans la gestion des finances publiques ainsi que le renforcement continu des capacités humaines.</p>
+  </div>
+</header>
+
+<!-- FORMATION INITIALE -->
+<section id="initiale" class="formation-block section-ivory">
+  <div class="formation-inner">
+    <div class="reveal"><div class="formation-badge">01 · Cycle de 2 à 3 ans</div></div>
+    <div class="formation-split img-right" style="margin-top:2.5rem;">
+      <div>
+        <h2 class="section-title dark reveal">La formation <em>initiale</em></h2>
+        <div class="divider-gold"></div>
+        <p class="formation-intro reveal">La formation initiale s'adresse aux agents de carrière des administrations financières de l'État. <strong>Accessible sur concours national</strong>, ce cycle vise les détenteurs d'un diplôme universitaire (Licence minimum) ou les agents éligibles conformément aux textes en vigueur.</p>
+        <div class="specialties-grid reveal">
+          <div class="specialty-card"><div class="specialty-num">01</div><div class="specialty-name">Assurances</div></div>
+          <div class="specialty-card"><div class="specialty-num">02</div><div class="specialty-name">Budget et Comptabilité Publique</div></div>
+          <div class="specialty-card"><div class="specialty-num">03</div><div class="specialty-name">Douanes et Accises</div></div>
+          <div class="specialty-card"><div class="specialty-num">04</div><div class="specialty-name">Impôts Directs et Indirects</div></div>
+          <div class="specialty-card"><div class="specialty-num">05</div><div class="specialty-name">Recettes Non Fiscales et Finances Publiques Provinciales</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;" class="reveal">
+          <a href="admission-continue.html" class="btn-primary">En savoir plus</a>
+          <a href="admission-initiale.html" class="btn-ghost">Conditions d'admission →</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="formation-img-wrap light">
+          <img src="../img/cours-1.png" alt="Formation initiale ENF" class="formation-img" />
+          <div class="formation-img-badge light-badge">Formation Initiale</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION CONTINUE -->
+<section id="continue" class="formation-block section-cream">
+  <div class="formation-inner">
+    <div class="reveal"><div class="formation-badge">02 · Perfectionnement</div></div>
+    <div class="formation-split img-left" style="margin-top:2.5rem;">
+      <div class="reveal">
+        <div class="formation-img-wrap light">
+          <img src="../img/cours-2.png" alt="Formation continue ENF" class="formation-img" />
+          <div class="formation-img-badge light-badge">Formation Continue</div>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title dark reveal">La formation <em>continue</em></h2>
+        <div class="divider-gold"></div>
+        <p class="formation-intro reveal">La formation continue vise le renforcement des capacités des agents et cadres publics des services financiers en activité, des personnels d'autres services publics et privés, ou de toute personne intéressée en matière de finances publiques.</p>
+        <div class="highlight-box reveal" style="margin:1.2rem 0;">
+          <p style="font-size:.85rem; color:var(--text-2); font-style:italic; line-height:1.8;">Réservée aux agents et cadres de l'administration publique en poste, sur désignation de leur hiérarchie, dans le cadre du renforcement continu des capacités.</p>
+        </div>
+        <div class="specialties-grid reveal" style="grid-template-columns:repeat(2,1fr);">
+          <div class="specialty-card"><div class="specialty-num">01</div><div class="specialty-name">Finances Publiques et Budget</div></div>
+          <div class="specialty-card"><div class="specialty-num">02</div><div class="specialty-name">Fiscalité et Recettes</div></div>
+          <div class="specialty-card"><div class="specialty-num">03</div><div class="specialty-name">Douanes et Commerce</div></div>
+          <div class="specialty-card"><div class="specialty-num">04</div><div class="specialty-name">Contrôle, Audit et Comptabilité</div></div>
+          <div class="specialty-card"><div class="specialty-num">05</div><div class="specialty-name">Assurances et Gestion des Risques</div></div>
+          <div class="specialty-card"><div class="specialty-num">06</div><div class="specialty-name">Management et Transversal</div></div>
+        </div>
+        <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;" class="reveal">
+          <a href="catalogue.html" class="btn-primary">Voir le catalogue</a>
+          <a href="admission-continue.html" class="btn-ghost">Conditions d'admission →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION CERTIFIANTE -->
+<section id="certifiante" class="section section-navy">
+  <div class="formation-inner">
+    <div class="reveal"><div class="formation-badge" style="background:rgba(200,168,75,.12); color:var(--gold);">03 · Spécialisation</div></div>
+    <div class="formation-split img-right" style="margin-top:2.5rem;">
+      <div class="reveal">
+        <h2 class="section-title light">La formation <em>certifiante</em></h2>
+        <div class="divider-gold"></div>
+        <p class="section-lead light">L'ENF organise des programmes de certification dans les domaines de la Fiscalité, des Douanes et Accises, ainsi que des Assurances. Proposées au catalogue officiel ou sur demande des bénéficiaires, ces formations renforcent les compétences techniques et pratiques dans des domaines spécialisés.</p>
+        <div class="highlight-box-dark reveal" style="margin:1.5rem 0;">
+          <p style="color:rgba(255,255,255,.62); font-size:.88rem; line-height:1.8; font-style:italic;">Ouverte aux professionnels des secteurs public et privé désireux d'acquérir une expertise technique pointue, sanctionnée par un certificat de haute spécialisation reconnu par l'État.</p>
+        </div>
+        <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;" class="reveal">
+          <a href="contact.html" class="btn-primary">Demander une formation</a>
+          <a href="admission-certifiante.html" class="btn-outline">Conditions d'admission →</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="formation-img-wrap dark">
+          <img src="../img/atelier-enf.png" alt="Formation certifiante ENF" class="formation-img" />
+          <div class="formation-img-badge">Formation Certifiante</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIPLÔMES -->
+<div class="diplomas-block">
+  <div class="eyebrow reveal" style="justify-content:center;">Reconnaissance officielle</div>
+  <h2 class="section-title light reveal" style="text-align:center; margin-top:.5rem;">Valorisation des <em>diplômes</em></h2>
+  <div class="reveal" style="max-width:760px; margin:1.2rem auto 0; text-align:center;">
+    <p style="color:rgba(255,255,255,.8); line-height:1.7; margin-bottom:1rem; font-size:1.05rem;">L’École Nationale des Finances délivre des diplômes et certifications professionnels reconnus par l’État, destinés à renforcer les compétences des agents publics et à accompagner leur progression au sein des administrations financières.</p>
+    <p style="color:var(--gold); line-height:1.6; font-size:.95rem;">Ces titres constituent des références en matière de maîtrise des finances publiques et participent directement à la professionnalisation des régies financières et des services économiques.</p>
+  </div>
+  <div class="diploma-cards reveal" style="margin-top:3rem;">
+    <div class="diploma-card">
+      <div class="diploma-name" style="font-size:1.5rem;">Diplôme ENF</div>
+      <div class="diploma-sub" style="font-weight:600; color:var(--white); margin-bottom:.8rem;">Diplôme professionnel en finances publiques</div>
+      <ul style="color:rgba(255,255,255,.62); font-size:.85rem; line-height:1.6; padding-left:1.2rem; margin:0;">
+        <li>Formation initiale de cycle complet</li>
+        <li>Spécialisation : budget, fiscalité, douanes, trésor</li>
+        <li>Référence pour l’intégration et l’évolution dans l’administration financière</li>
+      </ul>
+    </div>
+    <div class="diploma-card">
+      <div class="diploma-name" style="font-size:1.5rem;">Brevet</div>
+      <div class="diploma-sub" style="font-weight:600; color:var(--white); margin-bottom:.8rem;">Brevet de formation professionnelle</div>
+      <ul style="color:rgba(255,255,255,.62); font-size:.85rem; line-height:1.6; padding-left:1.2rem; margin:0;">
+        <li>Formations continues et de perfectionnement</li>
+        <li>Renforcement ciblé des compétences métiers</li>
+        <li>Validation des acquis opérationnels sur des modules spécifiques</li>
+      </ul>
+    </div>
+    <div class="diploma-card">
+      <div class="diploma-name" style="font-size:1.5rem;">Certificat</div>
+      <div class="diploma-sub" style="font-weight:600; color:var(--white); margin-bottom:.8rem;">Certificat de spécialisation</div>
+      <ul style="color:rgba(255,255,255,.62); font-size:.85rem; line-height:1.6; padding-left:1.2rem; margin:0;">
+        <li>Formations certifiantes du Centre d’Excellence</li>
+        <li>Domaines techniques et stratégiques des finances publiques</li>
+        <li>Reconnaissance des compétences spécialisées</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<script src="../js/main.js"></script>
+<script src="../js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription au Concours d'Entrée 2026 — ENF | RDC</title>
+  <meta name="description" content="Formulaire d'inscription en ligne au concours d'entrée à l'École Nationale des Finances, édition 2026." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .concours-panel { animation: fadeSlideIn .4s var(--ease); }
+    @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    .identity-top { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; align-items: start; margin-bottom: 2rem; }
+    .form-divider { height: 1px; background: var(--border); margin: 2rem 0; }
+    .urgency-note { font-size: .82rem; color: var(--text-2); line-height: 1.7; padding: 1rem 1.5rem; background: rgba(200,168,75,.06); border-left: 3px solid var(--gold); margin-bottom: 2rem; }
+    .terms-check { display: flex; align-items: flex-start; gap: .75rem; margin-top: 1.5rem; }
+    .terms-check input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .terms-check label { font-size: .82rem; color: var(--text-2); line-height: 1.7; }
+    .success-panel { text-align: center; padding: 4rem 2rem; }
+    .success-icon { width: 72px; height: 72px; margin: 0 auto 1.5rem; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .success-icon svg { width: 36px; height: 36px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .ref-number { font-family: var(--f-body); font-size: 1.2rem; font-weight: 700; color: var(--navy); background: var(--ivory); padding: .5rem 1.5rem; display: inline-block; margin: 1rem 0; letter-spacing: .1em; border: 1px solid var(--border); }
+    @media (max-width: 768px) {
+      .identity-top { grid-template-columns: 1fr; }
+      .identity-top .photo-upload { margin: 0 auto; }
+      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-slot"></div>
+
+<!-- ═══ HERO ═══ -->
+<header class="page-hero" style="background-image:url('../img/batiment-facade.png'); background-size:cover; background-position:center;">
+  <div style="position:absolute;inset:0;background:linear-gradient(105deg, rgba(12,30,53,.93) 45%, rgba(12,30,53,.7) 100%);"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);background-size:60px 60px;"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">›</span><a href="admission-initiale.html">Admissions</a><span class="sep">›</span><span>Concours 2026</span></div>
+    <div class="page-hero-badge" style="background:rgba(200,168,75,.15); border-color:var(--gold);">Édition 2026</div>
+    <h1 class="page-hero-title">Inscription au <em>Concours d'Entrée</em></h1>
+    <p class="page-hero-lead">Remplissez le formulaire ci-dessous pour soumettre votre candidature au concours d'entrée à l'École Nationale des Finances, édition 2026. Référence : N° /KIN/E.N.F./2026.</p>
+  </div>
+</header>
+
+<!-- ═══ ELIGIBILITY NOTICE ═══ -->
+<section class="section section-ivory" style="padding-bottom:0;">
+  <div style="max-width:800px; margin:0 auto;">
+    <div class="eligibility-notice reveal">
+      <p><strong>Conditions d'éligibilité :</strong> Le concours est ouvert aux seuls agents et cadres des <strong>Administrations des Finances et du Budget</strong>, des <strong>Administrations Financières (DGDA, DGI et DGRAD)</strong>, de l'<strong>ARCA</strong>, de la <strong>SONAS</strong> et des <strong>Directions Provinciales des Recettes</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORM MULTI-STEP ═══ -->
+<section class="section section-ivory" style="padding-top:1.5rem;">
+  <div style="max-width:800px; margin:0 auto;">
+
+    <!-- Step tabs -->
+    <div class="concours-steps-nav reveal">
+      <button class="concours-step-tab active"><span class="tab-num">1</span> Identité</button>
+      <button class="concours-step-tab"><span class="tab-num">2</span> Études</button>
+      <button class="concours-step-tab"><span class="tab-num">3</span> Documents</button>
+      <button class="concours-step-tab"><span class="tab-num">4</span> Récapitulatif</button>
+    </div>
+
+    <!-- ─── STEP 1: Identité ─── -->
+    <div class="concours-panel concours-form-section">
+      <h2 class="form-section-title">I. Identité du candidat</h2>
+      <p class="form-section-desc">Renseignez vos informations personnelles telles qu'elles figurent sur vos documents officiels.</p>
+
+      <div class="identity-top">
+        <div>
+          <label style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);font-weight:600;display:block;margin-bottom:.5rem;">Photo passeport</label>
+          <div class="photo-upload">
+            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <span>Cliquez pour ajouter</span>
+          </div>
+          <input type="file" id="photoInput" accept="image/*" style="display:none;" />
+        </div>
+        <div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" id="f-nom" placeholder="Votre nom de famille" />
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Post-nom</label>
+              <input type="text" id="f-postnom" placeholder="Post-nom" />
+            </div>
+            <div class="form-group">
+              <label>Prénom</label>
+              <input type="text" id="f-prenom" placeholder="Prénom" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Sexe</label>
+          <select id="f-sexe">
+            <option value="">Sélectionner</option>
+            <option>Masculin</option>
+            <option>Féminin</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Province d'origine</label>
+          <select id="f-province">
+            <option value="">Sélectionner une province</option>
+            <option>Kinshasa</option><option>Kongo Central</option><option>Kwango</option><option>Kwilu</option><option>Mai-Ndombe</option>
+            <option>Kasaï</option><option>Kasaï Central</option><option>Kasaï Oriental</option><option>Lomami</option><option>Sankuru</option>
+            <option>Maniema</option><option>Sud-Kivu</option><option>Nord-Kivu</option><option>Ituri</option><option>Haut-Uele</option>
+            <option>Tshopo</option><option>Bas-Uele</option><option>Nord-Ubangi</option><option>Sud-Ubangi</option><option>Mongala</option>
+            <option>Équateur</option><option>Tshuapa</option><option>Tanganyika</option><option>Haut-Lomami</option><option>Lualaba</option><option>Haut-Katanga</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Lieu de naissance</label>
+          <input type="text" id="f-lieu-naissance" placeholder="Ex : Kinshasa" />
+        </div>
+        <div class="form-group">
+          <label>Date de naissance</label>
+          <input type="date" id="f-date-naissance" />
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Service de provenance</label>
+          <select id="f-service">
+            <option value="">Sélectionner</option>
+            <option>Direction Générale des Douanes et Accises (DGDA)</option>
+            <option>Direction Générale des Impôts (DGI)</option>
+            <option>Direction Générale des Recettes Administratives (DGRAD)</option>
+            <option>Autorité de Régulation et de Contrôle des Assurances (ARCA)</option>
+            <option>Société Nationale d'Assurances (SONAS)</option>
+            <option>Administrations des Finances et du Budget</option>
+            <option>Directions Provinciales des Recettes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Grade</label>
+          <input type="text" id="f-grade" placeholder="Votre grade actuel" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Matricule ou référence de l'acte d'engagement</label>
+        <input type="text" id="f-matricule" placeholder="N° matricule ou réf. acte d'engagement" />
+      </div>
+
+      <div class="form-group">
+        <label>Adresse du candidat</label>
+        <input type="text" id="f-adresse" placeholder="Adresse complète" />
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Numéro de téléphone</label>
+          <input type="tel" id="f-tel" placeholder="+243 ..." />
+        </div>
+        <div class="form-group">
+          <label>Adresse e-mail</label>
+          <input type="email" id="f-email" placeholder="votre@email.com" />
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-group">
+        <label>Personne à prévenir en cas de nécessité</label>
+        <input type="text" id="f-urgence-nom" placeholder="Nom complet de la personne" />
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Adresse de la personne à prévenir</label>
+          <input type="text" id="f-urgence-adresse" placeholder="Adresse" />
+        </div>
+        <div class="form-group">
+          <label>Téléphone de la personne à prévenir</label>
+          <input type="tel" id="f-urgence-tel" placeholder="+243 ..." />
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <div></div>
+        <button class="btn-primary" data-step-next="1">Suivant : Niveau d'études →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 2: Études ─── -->
+    <div class="concours-panel concours-form-section" style="display:none;">
+      <h2 class="form-section-title">II. Niveau d'études</h2>
+      <p class="form-section-desc">Sélectionnez le diplôme le plus élevé que vous avez obtenu.</p>
+
+      <div class="diploma-options">
+        <div class="diploma-opt" data-value="Diplômé(e) d'État">
+          <div class="radio-dot"></div>
+          <span>Diplômé(e) d'État</span>
+        </div>
+        <div class="diploma-opt" data-value="Gradué(e)">
+          <div class="radio-dot"></div>
+          <span>Gradué(e)</span>
+        </div>
+        <div class="diploma-opt" data-value="Licencié(e)">
+          <div class="radio-dot"></div>
+          <span>Licencié(e)</span>
+        </div>
+        <div class="diploma-opt" data-value="Maîtrise">
+          <div class="radio-dot"></div>
+          <span>Maîtrise</span>
+        </div>
+        <div class="diploma-opt" data-value="Doctorat">
+          <div class="radio-dot"></div>
+          <span>Doctorat</span>
+        </div>
+        <div class="diploma-opt" data-value="Autres diplômes">
+          <div class="radio-dot"></div>
+          <span>Autres diplômes</span>
+        </div>
+      </div>
+
+      <div class="form-group" id="autreDiplomeGroup" style="display:none; margin-top:1rem;">
+        <label>Précisez le diplôme</label>
+        <input type="text" id="f-autre-diplome" placeholder="Intitulé du diplôme" />
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-outline" data-step-prev="0" style="color:var(--navy);border-color:var(--border);">← Retour</button>
+        <button class="btn-primary" data-step-next="2">Suivant : Documents →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 3: Documents ─── -->
+    <div class="concours-panel concours-form-section" style="display:none;">
+      <h2 class="form-section-title">III. Pièces à joindre</h2>
+      <p class="form-section-desc">Veuillez téléverser les documents requis au format PDF, JPG ou PNG (5 Mo max. par fichier).</p>
+
+      <div class="upload-grid">
+        <div class="upload-card">
+          <div class="upload-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <div>
+            <div class="upload-card-label">Carte d'identité</div>
+            <div class="upload-card-hint">Photocopie recto-verso</div>
+          </div>
+          <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div>
+            <div class="upload-card-label">Titre scolaire ou académique</div>
+            <div class="upload-card-hint">Diplôme, attestation de réussite</div>
+          </div>
+          <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div>
+            <div class="upload-card-label">Arrêté d'admission sous statut</div>
+            <div class="upload-card-hint">Ou acte d'engagement</div>
+          </div>
+          <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div>
+            <div class="upload-card-label">Commission d'affectation</div>
+            <div class="upload-card-hint">Photocopie</div>
+          </div>
+          <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div>
+            <div class="upload-card-label">Carte de service</div>
+            <div class="upload-card-hint">Photocopie</div>
+          </div>
+          <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-card-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <div>
+            <div class="upload-card-label">02 photos passeport</div>
+            <div class="upload-card-hint">Format numérique</div>
+          </div>
+          <input type="file" accept="image/*" style="display:none;" />
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-outline" data-step-prev="1" style="color:var(--navy);border-color:var(--border);">← Retour</button>
+        <button class="btn-primary" data-step-next="3">Suivant : Récapitulatif →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 4: Récapitulatif ─── -->
+    <div class="concours-panel concours-form-section" style="display:none;">
+      <h2 class="form-section-title">IV. Récapitulatif de votre inscription</h2>
+      <p class="form-section-desc">Vérifiez les informations saisies avant de soumettre votre candidature.</p>
+
+      <div class="summary-grid" id="summaryGrid">
+        <!-- Filled dynamically by JS -->
+      </div>
+
+      <div class="terms-check">
+        <input type="checkbox" id="termsCheck" />
+        <label for="termsCheck">Je certifie sur l'honneur que les informations fournies sont exactes et conformes aux documents originaux. Je m'engage à présenter personnellement les originaux de ces pièces lors de la vérification des dossiers, conformément au calendrier des opérations du concours d'entrée à l'ENF, édition 2026.</label>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-outline" data-step-prev="2" style="color:var(--navy);border-color:var(--border);">← Retour</button>
+        <button class="btn-primary" id="submitBtn" onclick="submitForm()">Soumettre ma candidature</button>
+      </div>
+
+      <!-- Success state (hidden by default) -->
+      <div id="successPanel" class="success-panel" style="display:none;">
+        <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h2 style="font-family:var(--f-display);font-size:1.8rem;color:var(--navy);margin-bottom:.5rem;">Candidature enregistrée</h2>
+        <p style="font-size:.9rem;color:var(--text-2);margin-bottom:1rem;">Votre inscription au Concours d'Entrée à l'ENF, édition 2026, a été soumise avec succès.</p>
+        <div class="ref-number" id="refNumber">KIN/E.N.F./2026-0001</div>
+        <p style="font-size:.82rem;color:var(--text-3);margin-top:1rem;max-width:500px;margin-left:auto;margin-right:auto;">Conservez ce numéro de référence. Vous recevrez une confirmation par e-mail. Munissez-vous obligatoirement de votre carte de service et des originaux de vos documents le jour du concours.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="index.html" class="btn-navy">Retour à l'accueil</a>
+          <button class="btn-outline" style="color:var(--navy);border-color:var(--border);" onclick="window.print()">Imprimer le récépissé</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+// Show "Autres" field when selected
+document.querySelectorAll('.diploma-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const val = opt.getAttribute('data-value');
+    const group = document.getElementById('autreDiplomeGroup');
+    if (group) group.style.display = (val === 'Autres diplômes') ? '' : 'none';
+  });
+});
+
+// Populate summary on step 4
+document.querySelectorAll('[data-step-next="3"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const grid = document.getElementById('summaryGrid');
+    if (!grid) return;
+    const fields = [
+      ['Nom', 'f-nom'], ['Post-nom', 'f-postnom'], ['Prénom', 'f-prenom'],
+      ['Sexe', 'f-sexe'], ['Province', 'f-province'],
+      ['Lieu de naissance', 'f-lieu-naissance'], ['Date de naissance', 'f-date-naissance'],
+      ['Service', 'f-service'], ['Grade', 'f-grade'], ['Matricule', 'f-matricule'],
+      ['Adresse', 'f-adresse'], ['Téléphone', 'f-tel'], ['E-mail', 'f-email'],
+    ];
+    const selected = document.querySelector('.diploma-opt.selected');
+    const diploma = selected ? selected.getAttribute('data-value') : '—';
+    const uploaded = document.querySelectorAll('.upload-card.uploaded').length;
+
+    grid.innerHTML = fields.map(([label, id]) => {
+      const el = document.getElementById(id);
+      const val = el ? (el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : el.value) : '';
+      return `<div class="summary-item"><div class="s-label">${label}</div><div class="s-value">${val || '—'}</div></div>`;
+    }).join('') +
+    `<div class="summary-item"><div class="s-label">Diplôme</div><div class="s-value">${diploma}</div></div>` +
+    `<div class="summary-item"><div class="s-label">Documents joints</div><div class="s-value">${uploaded}/6 fichiers</div></div>`;
+  });
+});
+
+function submitForm() {
+  const check = document.getElementById('termsCheck');
+  if (!check || !check.checked) {
+    alert('Veuillez cocher la déclaration sur l\'honneur pour continuer.');
+    return;
+  }
+  // Generate reference number
+  const num = String(Math.floor(Math.random() * 9000) + 1000);
+  document.getElementById('refNumber').textContent = `KIN/E.N.F./2026-${num}`;
+
+  // Hide form, show success
+  document.querySelector('.concours-steps-nav').style.display = 'none';
+  document.getElementById('summaryGrid').style.display = 'none';
+  document.querySelector('.terms-check').style.display = 'none';
+  document.querySelector('.form-nav:last-of-type') && document.querySelectorAll('.form-nav').forEach(n => n.style.display = 'none');
+  document.querySelectorAll('.form-section-title, .form-section-desc').forEach(el => el.style.display = 'none');
+  document.getElementById('successPanel').style.display = '';
+}
+</script>
+</body>
+</html>
