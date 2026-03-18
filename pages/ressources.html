@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ressources & Documentation — École Nationale des Finances | RDC</title>
+  <meta name="description" content="Accédez aux textes fondateurs, documents officiels, publications de recherche et liens institutionnels de l'ENF RDC." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <style>
+    .res-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+    .res-card { padding: 2.5rem; background: var(--white); border: 1px solid rgba(12,30,53,.08); border-top: 3px solid var(--gold); border-radius: var(--r); }
+    .res-card h3 { font-family: var(--f-display); color: var(--navy); margin-bottom: 1.5rem; font-size: 1.4rem; border-bottom: 1px solid rgba(200,168,75,.2); padding-bottom: .75rem; }
+    .res-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .res-list li { position: relative; padding-left: 1.5rem; color: var(--text-2); font-size: .95rem; line-height: 1.6; }
+    .res-list li::before { content: '➜'; position: absolute; left: 0; color: var(--gold); font-size: .9rem; }
+    .res-list a { color: var(--navy); font-weight: 500; text-decoration: none; transition: color var(--t); }
+    .res-list a:hover { color: var(--gold-2); text-decoration: underline; }
+    
+    .res-full-width { grid-column: 1 / -1; background: var(--navy); color: var(--white); border-top: 3px solid var(--gold); }
+    .res-full-width h3 { color: var(--gold-2); border-color: rgba(255,255,255,.1); }
+    .res-full-width p { color: rgba(255,255,255,.8); line-height: 1.8; margin-bottom: 1.5rem; }
+    .res-full-width .res-list a { color: var(--gold); }
+    .res-full-width .res-list a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .res-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero" style="background-image:url('../img/batiment-facade.png'); background-size:cover; background-position:center;"><div style="position:absolute;inset:0;background:rgba(12,30,53,.85);"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">›</span><span>Ressources</span></div>
+    <div class="page-hero-badge">Documentation Officielle</div>
+    <h1 class="page-hero-title">Espace <em>Ressources</em></h1>
+    <p class="page-hero-lead">Accédez à notre bibliothèque numérique : textes fondateurs, documentation institutionnelle, doctrine financière et publications stratégiques pour une gestion exemplaire des finances publiques.</p>
+  </div>
+</header>
+
+<section class="section section-white">
+  <div class="reveal">
+    <div class="eyebrow">Bibliothèque numérique</div>
+    <h2 class="section-title dark">Textes & <em>Documents</em></h2>
+    <div class="divider-gold"></div>
+    
+    <div class="res-grid">
+      <!-- Documents Officiels -->
+      <div class="res-card reveal">
+        <h3>Documents officiels & institutionnels</h3>
+        <p style="margin-bottom:1.5rem; font-size:.9rem; color:var(--text-3);">La rubrique regroupe les textes légaux et règlementaires de l'École Nationale des Finances, ENF.</p>
+        <ul class="res-list">
+          <li>Constitution de la République Démocratique du Congo</li>
+          <li>Loi n°25/045 du 01/07/2025 modifiant le statut des agents de l'État</li>
+          <li>Loi N° 11/011 du 13/07/2011 relative aux Finances Publiques</li>
+          <li>Arrêté Ministériel n°016 du 11/07/2023 (Conditions d'admission)</li>
+          <li><a href="../docs/ARRETE-PROGRAMME-DE-FORMATION-2026.pdf" target="_blank" rel="noopener">Arrêté Ministériel n° CAB/MIN/FINANCES/2025 (Programme)</a></li>
+          <li><a href="../docs/REGLEMENT-DORDRE-INTERIEUR-ENF.pdf" target="_blank" rel="noopener">Règlement d'Ordre Intérieur de l'ENF</a></li>
+        </ul>
+      </div>
+
+      <!-- Recherche & Publications -->
+      <div class="res-card reveal reveal-delay-1">
+        <h3>Recherche & Publications</h3>
+        <p style="margin-bottom:1.5rem; font-size:.9rem; color:var(--text-3);">Carrefour de réflexion stratégique, l'ENF contribue à la production de la doctrine financière de l'État.</p>
+        <ul class="res-list">
+          <li>Revue des Finances Publiques</li>
+          <li>Notes techniques des experts ENF</li>
+          <li>Mémoires de recherche des promotions terminales</li>
+        </ul>
+        <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(0,0,0,.05);">
+          <p style="font-size:.85rem; font-weight:600; color:var(--navy); margin-bottom:1rem;">Suivez-nous sur nos réseaux :</p>
+          <div style="display:flex; gap:1rem;">
+            <a href="https://www.facebook.com/profile.php?id=61582518098472" target="_blank" style="color:var(--gold-2); font-size:.9rem; text-decoration:none;">Facebook</a>
+            <a href="https://x.com/enf_rdc" target="_blank" style="color:var(--gold-2); font-size:.9rem; text-decoration:none;">Twitter (X)</a>
+            <a href="https://www.youtube.com/@enf-rdc" target="_blank" style="color:var(--gold-2); font-size:.9rem; text-decoration:none;">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liens Institutionnels -->
+      <div class="res-card res-full-width reveal">
+        <h3>Liens Institutionnels</h3>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:2rem;">
+          <div>
+            <ul class="res-list">
+              <li><a href="https://presidence.cd/" target="_blank">Présidence de la RDC</a></li>
+              <li><a href="https://www.primature.gouv.cd/" target="_blank">Gouvernement (Primature)</a></li>
+              <li><a href="https://finances.gouv.cd/" target="_blank">Ministère des Finances</a></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="res-list">
+              <li><a href="https://budget.gouv.cd/" target="_blank">Ministère du Budget</a></li>
+              <li><a href="https://fonctionpublique.gouv.cd/" target="_blank">Ministère de la Fonction Publique</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="../js/main.js"></script>
+<script src="../js/components.js"></script>
+</body>
+</html>
