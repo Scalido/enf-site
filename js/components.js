@@ -76,16 +76,22 @@ function renderNavbar() {
     <a href="contact.html" class="${isActive('contact.html')}">Contact</a>
   </div>
   <div class="mobile-nav-section">
-    <div class="mobile-nav-label">Formations</div>
-    <a href="formation.html#initiale">Formation Initiale</a>
-    <a href="formation.html#continue">Formation Continue</a>
-    <a href="formation.html#certifiante">Formation Certifiante</a>
+    <button class="mobile-nav-toggle">Formations <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="mobile-nav-content">
+      <a href="formation.html#initiale">Formation Initiale</a>
+      <a href="formation.html#continue">Formation Continue</a>
+      <a href="formation.html#certifiante">Formation Certifiante</a>
+      <a href="catalogue.html">Catalogue complet</a>
+    </div>
   </div>
   <div class="mobile-nav-section">
-    <div class="mobile-nav-label">Admissions</div>
-    <a href="admission-initiale.html">Admission — Initiale</a>
-    <a href="admission-continue.html">Admission — Continue</a>
-    <a href="admission-certifiante.html">Admission — Certifiante</a>
+    <button class="mobile-nav-toggle">Admissions <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="mobile-nav-content">
+      <a href="admission-initiale.html">Admission — Initiale</a>
+      <a href="admission-continue.html">Admission — Continue</a>
+      <a href="admission-certifiante.html">Admission — Certifiante</a>
+      <a href="concours.html" style="color:var(--gold-2);">Inscription Concours 2026</a>
+    </div>
   </div>
   <div class="mobile-nav-section">
     <div class="mobile-nav-label">Services</div>
@@ -193,6 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         h.classList.remove('open'); d.classList.remove('open'); o.classList.remove('open');
         document.body.style.overflow = '';
       }));
+      // Accordion toggles
+      d.querySelectorAll('.mobile-nav-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const wasActive = btn.classList.contains('active');
+          d.querySelectorAll('.mobile-nav-toggle').forEach(b => b.classList.remove('active'));
+          if (!wasActive) btn.classList.add('active');
+        });
+      });
     }
     // Rebind navbar scroll
     const nav = document.querySelector('.navbar');
