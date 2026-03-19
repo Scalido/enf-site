@@ -253,6 +253,90 @@ if (contactForm) {
   });
 }
 
+/* ── Feedback Forms Logic ───────────────────── */
+function initFeedbackForms() {
+  // Anonymity Toggle
+  const anonToggle = document.getElementById('anonymity-toggle');
+  const anonInput = document.getElementById('is-anonymous');
+  const identityFields = document.getElementById('identity-fields');
+  
+  if (anonToggle && anonInput && identityFields) {
+    anonToggle.addEventListener('click', () => {
+      anonInput.checked = !anonInput.checked;
+      identityFields.classList.toggle('visible', !anonInput.checked);
+      // Requirement fields update
+      const nameInput = document.getElementById('full-name');
+      const emailInput = document.getElementById('email');
+      if (anonInput.checked) {
+        if (nameInput) nameInput.removeAttribute('required');
+        if (emailInput) emailInput.removeAttribute('required');
+      } else {
+        if (nameInput) nameInput.setAttribute('required', '');
+        if (emailInput) emailInput.setAttribute('required', '');
+      }
+    });
+  }
+
+  // Contact Toggle (Suggestions)
+  const contactToggle = document.getElementById('contact-toggle');
+  const contactInput = document.getElementById('want-contact');
+  const contactFields = document.getElementById('contact-fields');
+
+  if (contactToggle && contactInput && contactFields) {
+    contactToggle.addEventListener('click', () => {
+      contactInput.checked = !contactInput.checked;
+      contactFields.classList.toggle('visible', contactInput.checked);
+    });
+  }
+
+  // File Upload Preview
+  const uploadZone = document.getElementById('upload-zone');
+  const fileInput = document.getElementById('file-input');
+  const fileName = document.getElementById('file-name');
+
+  if (uploadZone && fileInput) {
+    uploadZone.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        fileName.textContent = 'Fichier : ' + fileInput.files[0].name;
+      }
+    });
+  }
+
+  // Form Submissions
+  document.querySelectorAll('.feedback-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Collect Data (JSON structure ready)
+      const data = {
+        type: form.querySelector('select:first-of-type')?.value,
+        category: form.querySelector('select:nth-of-type(2)')?.value || 'N/A',
+        message: form.querySelector('textarea')?.value,
+        anonymous: document.getElementById('is-anonymous')?.checked || false,
+        recontact: document.getElementById('want-contact')?.checked || false,
+        contact: {
+          name: form.querySelector('[id*="name"]')?.value || '',
+          email: form.querySelector('[id*="email"]')?.value || '',
+          phone: form.querySelector('[id*="phone"]')?.value || ''
+        },
+        attachment: document.getElementById('file-input')?.files[0]?.name || null,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('Submission JSON:', JSON.stringify(data, null, 2));
+
+      // UI Switch
+      form.style.display = 'none';
+      const successMsg = form.parentElement.querySelector('#success-msg');
+      if (successMsg) successMsg.style.display = 'block';
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initFeedbackForms);
+
+
 /* ── Ripple on buttons ──────────────────────── */
 document.querySelectorAll('.btn-primary, .btn-navy, .btn-submit').forEach(btn => {
   btn.addEventListener('click', function(e) {
