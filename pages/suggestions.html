@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boîte à Suggestions — École Nationale des Finances | RDC</title>
+  <meta name="description" content="Espace dédié à la collecte des suggestions pour l'amélioration des services de l'ENF." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<header class="page-hero" style="background-image:url('../img/ministere-finances.jpg'); background-size:cover; background-position:center;">
+  <div style="position:absolute;inset:0;background:rgba(12,30,53,.85);"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">›</span><span>Suggestions</span></div>
+    <div class="page-hero-badge">Amélioration Continue</div>
+    <h1 class="page-hero-title">Espace d’<em>amélioration</em> des services</h1>
+    <p class="page-hero-lead">Dans une démarche d’amélioration continue, l’École Nationale des Finances met à disposition un espace dédié à la collecte des suggestions, observations et recommandations relatives à ses formations et services.</p>
+  </div>
+</header>
+
+<section class="section section-ivory">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Qualité & Service</div>
+      <h2 class="section-title dark" style="margin-bottom:1.5rem;">Votre avis <em>compte</em></h2>
+      <p class="section-desc" style="margin-bottom:2rem;">Les contributions reçues permettent d’améliorer la qualité des enseignements, d’adapter les contenus aux besoins et d’optimiser l’expérience des apprenants au sein de l'ENF.</p>
+      
+      <div class="criteria-list">
+        <li><strong>Innovation</strong> : Proposez de nouvelles approches pédagogiques ou technologiques.</li>
+        <li><strong>Efficacité</strong> : Signalez des points d'amélioration dans l'organisation administrative.</li>
+        <li><strong>Expérience</strong> : Partagez votre ressenti sur le cadre de vie et d'études.</li>
+      </div>
+
+      <div style="margin-top:2.5rem; text-align:center;">
+        <div class="suggestion-icon" style="margin:0 auto 1rem;">
+          <svg viewBox="0 0 24 24"><path d="M9 21h6m-3-18a6 6 0 00-6 6c0 1.5.5 3 1.5 4.5 1.5 2 3.5 3.5 3.5 5.5v1h2v-1c0-2 2-3.5 3.5-5.5a6 6 0 00-4.5-10.5z"/></svg>
+        </div>
+        <p style="font-size:.8rem; color:var(--text-3); font-style:italic;">"L'excellence est un processus permanent."</p>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal reveal-delay-1">
+      <h2 class="form-title">Envoyer une suggestion</h2>
+      <form id="suggestion-form" class="feedback-form">
+        <div class="form-group">
+          <label>Type de contribution</label>
+          <select id="sugg-type" required>
+            <option value="">Sélectionner</option>
+            <option value="suggestion">Suggestion</option>
+            <option value="problème">Problème</option>
+            <option value="recommandation">Recommandation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Service concerné</label>
+          <select id="sugg-category" required>
+            <option value="">Sélectionner le service</option>
+            <option value="formation">Formation</option>
+            <option value="administration">Administration</option>
+            <option value="site">Site web</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Votre message</label>
+          <textarea id="sugg-message" placeholder="Détaillez votre proposition ici..." required></textarea>
+        </div>
+
+        <div class="toggle-wrap" id="contact-toggle">
+          <input type="checkbox" id="want-contact" style="display:none;" />
+          <div class="toggle-switch"></div>
+          <span style="font-size:.85rem; color:var(--text-1); font-weight:500;">Souhaitez-vous être recontacté ?</span>
+        </div>
+
+        <div id="contact-fields" class="form-identity-fields">
+          <div class="form-group"><label>Nom complet</label><input type="text" id="sugg-name" placeholder="Votre nom" /></div>
+          <div class="form-group"><label>Adresse e-mail</label><input type="email" id="sugg-email" placeholder="votre@email.com" /></div>
+        </div>
+
+        <button type="submit" class="btn-submit" style="width:100%; margin-top:1rem;">Envoyer ma contribution</button>
+      </form>
+      
+      <div id="success-msg" style="display:none; text-align:center; padding:2rem 1rem;">
+        <div style="width:64px; height:64px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;">
+          <svg viewBox="0 0 24 24" style="width:32px; height:32px; stroke:var(--navy); fill:none; stroke-width:3;"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 style="font-family:var(--f-display); font-size:1.5rem; color:var(--navy); margin-bottom:.5rem;">Merci beaucoup !</h3>
+        <p style="font-size:.9rem; color:var(--text-2); line-height:1.6;">Merci pour votre contribution. Elle sera analysée par les services compétents avec la plus grande attention.</p>
+        <button class="btn-ghost" onclick="location.reload()" style="margin-top:1.5rem;">Envoyer un autre message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
